@@ -2,10 +2,12 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import axios from "axios";
 import PhotographerCard from "./PhotographerCard";
+import Navbar from "./Navbar";
 
 const Home = () => {
 	const [photogrpahers, setPhotographers] = useState([]);
 	const [navTags, setNavTags] = useState([]);
+	const [filter, setFilter] = useState({ clicked: false, value: null });
 
 	useEffect(() => {
 		fetchPhotographers();
@@ -21,19 +23,19 @@ const Home = () => {
 		setNavTags(request.data);
 	}
 
+	const handleBtns = (e) => {
+		console.log(e);
+		//if user select pill add the value to the filter list
+		e.istrusted
+			? console.log(false)
+			: setFilter(filter + [{ clicked: true, value: e.target.value }]);
+	};
+
 	return (
 		<>
 			<header>
-				<NavLink to="/home">FishEye</NavLink>
-				<nav>
-					<div>
-						{navTags
-							? navTags.map((navtag, i) => {
-									return <button key={i}>#{navtag}</button>;
-							  })
-							: "Loading..."}
-					</div>
-				</nav>
+				<NavLink to="/">FishEye</NavLink>
+				<Navbar navTags={navTags} handleBtns={handleBtns} />
 			</header>
 			<main>
 				<div>
