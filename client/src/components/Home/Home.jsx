@@ -8,7 +8,7 @@ const Home = () => {
 	const [photographers, setPhotographers] = useState([]);
 	const [filterPhotographers, setFilterPhotographers] = useState([]);
 	const [navTags, setNavTags] = useState([]);
-	const [filter, setFilter] = useState({ clicked: false, value: null });
+	const [filter, setFilter] = useState([]);
 
 	useEffect(() => {
 		fetchPhotographers();
@@ -25,18 +25,34 @@ const Home = () => {
 	}
 
 	const handleBtns = (e) => {
-		setFilter((filter) => [{ clicked: true, value: e.target.value }]);
-
-		filter.map((obj) => {
-			if (obj.clicked) {
-				const isClicked = photographers.filter(function (photographer) {
-					return photographer.tags.includes(obj.value);
-				});
-				setFilterPhotographers(isClicked);
-			}
-			return console.log(obj.value);
-		});
+		if (!e.target.hasAttribute("is-selected")) {
+			e.target.setAttribute("is-selected", true);
+			setFilter((filter) => [...filter, e.target.value]);
+		} else {
+			e.target.removeAttribute("is-selected");
+			const removeTag = (e) => {
+				let filterTags = filter.filter((tag) => tag !== e.target.value);
+				setFilter(() => [...filterTags]);
+			};
+			removeTag(e);
+		}
 	};
+
+	useEffect(() => {
+		const targetPhotographers = (value, objects) => {
+			if (filter.length > 0) {
+				filter.map((value) => {
+					setFilterPhotographers(
+						photographers.filter(function (photographer) {
+							return photographer.tags.includes(value);
+						})
+					);
+					return photographers;
+				});
+			} else setFilterPhotographers(photographers);
+		};
+		targetPhotographers(filter, photographers);
+	}, [filter, photographers]);
 
 	return (
 		<>
@@ -48,7 +64,7 @@ const Home = () => {
 				<div>
 					<h1>Nos photographes</h1>
 				</div>
-				{photographers.map((photographer) => {
+				{filterPhotographers.map((photographer) => {
 					return (
 						<div key={photographer.id}>
 							<PhotographerCard
