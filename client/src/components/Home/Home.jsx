@@ -5,7 +5,8 @@ import PhotographerCard from "./PhotographerCard";
 import Navbar from "./Navbar";
 
 const Home = () => {
-	const [photogrpahers, setPhotographers] = useState([]);
+	const [photographers, setPhotographers] = useState([]);
+	const [filterPhotographers, setFilterPhotographers] = useState([]);
 	const [navTags, setNavTags] = useState([]);
 	const [filter, setFilter] = useState({ clicked: false, value: null });
 
@@ -24,11 +25,17 @@ const Home = () => {
 	}
 
 	const handleBtns = (e) => {
-		console.log(e);
-		//if user select pill add the value to the filter list
-		e.istrusted
-			? console.log(false)
-			: setFilter(filter + [{ clicked: true, value: e.target.value }]);
+		setFilter((filter) => [{ clicked: true, value: e.target.value }]);
+
+		filter.map((obj) => {
+			if (obj.clicked) {
+				const isClicked = photographers.filter(function (photographer) {
+					return photographer.tags.includes(obj.value);
+				});
+				setFilterPhotographers(isClicked);
+			}
+			return console.log(obj.value);
+		});
 	};
 
 	return (
@@ -41,7 +48,7 @@ const Home = () => {
 				<div>
 					<h1>Nos photographes</h1>
 				</div>
-				{photogrpahers.map((photographer) => {
+				{photographers.map((photographer) => {
 					return (
 						<div key={photographer.id}>
 							<PhotographerCard
