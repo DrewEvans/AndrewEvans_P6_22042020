@@ -54,6 +54,9 @@ const Home = () => {
 		targetPhotographers(filter, photographers);
 	}, [filter, photographers]);
 
+	console.log(filter);
+
+	console.log(photographers);
 	return (
 		<>
 			<header>
@@ -61,6 +64,9 @@ const Home = () => {
 				<Navbar navTags={navTags} handleBtns={handleBtns} />
 			</header>
 			<main>
+				<div>
+					<h1 className="test">I am test</h1>
+				</div>
 				<div>
 					<h1>Nos photographes</h1>
 				</div>
