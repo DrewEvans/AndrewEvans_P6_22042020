@@ -1,0 +1,42 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+.card-container {
+	@include flexCenter(column);
+	justify-content: space-between;
+	margin: 1em 2em;
+	width: 320px;
+
+	.photographer-details {
+		@include flexCenter(column);
+
+		.name {
+			color: $secondary-color;
+			margin: 0.5em;
+			flex-wrap: nowrap;
+			text-decoration: none;
+		}
+		.location {
+			margin: 0;
+		}
+	}
+
+	.tagline {
+		margin: 0.5em;
+	}
+	.price {
+		color: $tertiary-color;
+		margin: 0.2em;
+	}
+
+	.tags-container {
+		@include flexCenter(row);
+		.tags {
+			@include tagDefault;
+			padding: 0 0.5em;
+		}
+		span[is-selected="true"] {
+			@include tagTarget;
+		}
+	}
+}

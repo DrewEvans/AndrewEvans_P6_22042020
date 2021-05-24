@@ -1,0 +1,20 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+nav {
+	.filter-container {
+		@include flexCenter(row);
+		flex-wrap: wrap;
+		width: 450px;
+
+		button {
+			@include tagDefault;
+		}
+		button:hover {
+			@include tagTarget;
+		}
+		button[is-selected="true"] {
+			@include tagTarget;
+		}
+	}
+}

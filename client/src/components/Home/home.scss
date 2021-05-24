@@ -1,0 +1,21 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+.nav-container {
+	display: flex;
+	justify-content: space-around;
+	flex-wrap: wrap;
+	width: 100%;
+	// justify-content: space-around;
+}
+
+.h1-container {
+	.title {
+		color: $primary-color;
+	}
+}
+
+.photographers-container {
+	@include flexCenter(row);
+	flex-wrap: wrap;
+}

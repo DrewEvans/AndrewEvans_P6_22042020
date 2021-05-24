@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
+import Logo from "../Home/Logo";
 
 const PhotographerProfile = ({ match }) => {
 	const ID = parseInt(match.params.id);
@@ -74,6 +75,7 @@ const PhotographerProfile = ({ match }) => {
 
 	return (
 		<>
+			<Logo />
 			<main>
 				<header>
 					{photographer ? (
@@ -96,10 +98,8 @@ const PhotographerProfile = ({ match }) => {
 						onChange={(e) => {
 							setSortType(e.target.value);
 						}}
-						className=" form-select form-select-md mb-2 select-css "
 					>
 						<option value="likes">Popularité</option>
-
 						<option value="date">Date</option>
 						<option value="image">Titre</option>
 					</select>

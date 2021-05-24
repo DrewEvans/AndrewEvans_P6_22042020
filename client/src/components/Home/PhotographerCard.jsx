@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import "./photographercard.scss";
 
 const imageSizes = {
 	height: "200px",
@@ -19,29 +20,31 @@ const PhotographerCard = ({
 }) => {
 	return (
 		<>
-			<div>
+			<div className="card-container">
 				<NavLink to={`/photographer/${id}`}>
-					<div>
+					<div className="img-container">
 						<img
 							style={imageSizes}
 							src={`../assets/Photographers ID Photos/${portrait}`}
 							alt=""
 						/>
 					</div>
-					<div>
-						<h2>{name}</h2>
-						<p>
+					<div className="photographer-details">
+						<h2 className="name">{name}</h2>
+						<p className="location">
 							{city}, {country}
 						</p>
 					</div>
 				</NavLink>
-			</div>
-			<div>
-				<p>{tagline}</p>
-				<p>{price}€/jour</p>
-				<div>
+				<p className="tagline">{tagline}</p>
+				<p className="price">{price}€/jour</p>
+				<div className="tags-container">
 					{tags.map((tag, i) => {
-						return <span key={i}>#{tag}</span>;
+						return (
+							<span className="tags" key={i}>
+								#{tag}
+							</span>
+						);
 					})}
 				</div>
 			</div>

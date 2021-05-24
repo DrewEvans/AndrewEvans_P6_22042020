@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+
 import axios from "axios";
 import PhotographerCard from "./PhotographerCard";
 import Navbar from "./Navbar";
+import Logo from "./Logo";
+import "./home.scss";
 
 const Home = () => {
 	const [photographers, setPhotographers] = useState([]);
@@ -60,32 +62,33 @@ const Home = () => {
 	return (
 		<>
 			<header>
-				<NavLink to="/">FishEye</NavLink>
-				<Navbar navTags={navTags} handleBtns={handleBtns} />
+				<div className="nav-container">
+					<Logo />
+					<Navbar navTags={navTags} handleBtns={handleBtns} />
+				</div>
+				<div className="h1-container">
+					<h1 className="title">Nos photographes</h1>
+				</div>
 			</header>
 			<main>
-				<div>
-					<h1 className="test">I am test</h1>
+				<div className="photographers-container">
+					{filterPhotographers.map((photographer) => {
+						return (
+							<div key={photographer.id}>
+								<PhotographerCard
+									name={photographer.name}
+									city={photographer.city}
+									country={photographer.country}
+									price={photographer.price}
+									tags={photographer.tags}
+									tagline={photographer.tagline}
+									id={photographer.id}
+									portrait={photographer.portrait}
+								/>
+							</div>
+						);
+					})}
 				</div>
-				<div>
-					<h1>Nos photographes</h1>
-				</div>
-				{filterPhotographers.map((photographer) => {
-					return (
-						<div key={photographer.id}>
-							<PhotographerCard
-								name={photographer.name}
-								city={photographer.city}
-								country={photographer.country}
-								price={photographer.price}
-								tags={photographer.tags}
-								tagline={photographer.tagline}
-								id={photographer.id}
-								portrait={photographer.portrait}
-							/>
-						</div>
-					);
-				})}
 			</main>
 		</>
 	);
