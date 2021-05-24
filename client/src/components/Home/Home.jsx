@@ -1,10 +1,12 @@
-import { useEffect, useState } from "react";
-
+import { useEffect, useState, lazy, Suspense } from "react";
 import axios from "axios";
-import PhotographerCard from "./PhotographerCard";
+// import PhotographerCard from "./PhotographerCard";
 import Navbar from "./Navbar";
 import Logo from "./Logo";
 import "./home.scss";
+import LoadingSpinner from "../LoadingSpinner";
+
+const PhotographerCard = lazy(() => import("./PhotographerCard"));
 
 const Home = () => {
 	const [photographers, setPhotographers] = useState([]);
@@ -56,14 +58,12 @@ const Home = () => {
 		targetPhotographers(filter, photographers);
 	}, [filter, photographers]);
 
-	console.log(filter);
-
-	console.log(photographers);
 	return (
 		<>
 			<header>
 				<div className="nav-container">
 					<Logo />
+
 					<Navbar navTags={navTags} handleBtns={handleBtns} />
 				</div>
 				<div className="h1-container">
@@ -71,24 +71,26 @@ const Home = () => {
 				</div>
 			</header>
 			<main>
-				<div className="photographers-container">
-					{filterPhotographers.map((photographer) => {
-						return (
-							<div key={photographer.id}>
-								<PhotographerCard
-									name={photographer.name}
-									city={photographer.city}
-									country={photographer.country}
-									price={photographer.price}
-									tags={photographer.tags}
-									tagline={photographer.tagline}
-									id={photographer.id}
-									portrait={photographer.portrait}
-								/>
-							</div>
-						);
-					})}
-				</div>
+				<Suspense fallback={<LoadingSpinner />}>
+					<div className="photographers-container">
+						{filterPhotographers.map((photographer) => {
+							return (
+								<div key={photographer.id}>
+									<PhotographerCard
+										name={photographer.name}
+										city={photographer.city}
+										country={photographer.country}
+										price={photographer.price}
+										tags={photographer.tags}
+										tagline={photographer.tagline}
+										id={photographer.id}
+										portrait={photographer.portrait}
+									/>
+								</div>
+							);
+						})}
+					</div>
+				</Suspense>
 			</main>
 		</>
 	);

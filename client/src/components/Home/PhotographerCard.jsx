@@ -1,12 +1,15 @@
 import { NavLink } from "react-router-dom";
+import Image from "react-image-resizer";
 import "./photographercard.scss";
 
-const imageSizes = {
-	height: "200px",
-	width: "200px",
-	objectFit: "cover",
-	borderRadius: "50%",
-};
+// const style = {
+// 	image: {
+// 		// height: "200px",
+// 		// width: "200px",
+// 		objectFit: "contain",
+// 		borderRadius: "50%",
+// 	},
+// };
 
 const PhotographerCard = ({
 	name,
@@ -23,11 +26,18 @@ const PhotographerCard = ({
 			<div className="card-container">
 				<NavLink to={`/photographer/${id}`}>
 					<div className="img-container">
-						<img
+						<Image
+							// style={style.image}
+							className="profile-img"
+							src={`../assets/Photographers ID Photos/${portrait}`}
+							width={200}
+							height={200}
+						/>
+						{/* <img
 							style={imageSizes}
 							src={`../assets/Photographers ID Photos/${portrait}`}
 							alt=""
-						/>
+						/> */}
 					</div>
 					<div className="photographer-details">
 						<h2 className="name">{name}</h2>

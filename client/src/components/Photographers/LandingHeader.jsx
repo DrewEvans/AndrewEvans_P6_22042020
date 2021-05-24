@@ -1,3 +1,5 @@
+import "./landingHeader.scss";
+
 const profileImage = {
 	height: "200px",
 	width: "200px",
@@ -16,32 +18,39 @@ const LandingHeader = ({
 	id,
 }) => {
 	return (
-		<>
-			<div>
+		<div className="header-container">
+			<div className="photographer-details">
 				<h1>{name}</h1>
 
-				<p>
+				<p className="location">
 					{city}, {country}
 				</p>
-				<p>{tagline}</p>
+				<p className="tagline">{tagline}</p>
 
-				<div>
+				<div className="tag-container">
 					{tags
 						? tags.map((tag, i) => {
-								return <div key={i}>{tag}</div>;
+								return (
+									<div className="tags" key={i}>
+										#{tag}
+									</div>
+								);
 						  })
 						: "Loading..."}
 				</div>
-				<button>Contactez-moi</button>
-				<div>
-					<img
-						style={profileImage}
-						src={`../assets/Photographers ID Photos/${portrait}`}
-						alt=""
-					/>
-				</div>
 			</div>
-		</>
+			<div className="btn-container">
+				<button>Contactez-moi</button>
+			</div>
+			<div className="profileImg-container">
+				<img
+					className="profile-pic"
+					// style={profileImage}
+					src={`../assets/Photographers ID Photos/${portrait}`}
+					alt=""
+				/>
+			</div>
+		</div>
 	);
 };
 

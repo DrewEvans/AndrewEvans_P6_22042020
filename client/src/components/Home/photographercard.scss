@@ -7,6 +7,19 @@
 	margin: 1em 2em;
 	width: 320px;
 
+	.img-container {
+		height: 200px;
+		width: 200px;
+		border-radius: 50%;
+		background-color: aqua;
+		@include flexCenter(none);
+
+		.profile-img {
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+
 	.photographer-details {
 		@include flexCenter(column);
 

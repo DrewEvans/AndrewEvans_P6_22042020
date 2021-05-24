@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
 import Logo from "../Home/Logo";
+import "./photographerprofile.scss";
 
 const PhotographerProfile = ({ match }) => {
 	const ID = parseInt(match.params.id);
@@ -103,23 +104,25 @@ const PhotographerProfile = ({ match }) => {
 						<option value="date">Date</option>
 						<option value="image">Titre</option>
 					</select>
-					{sortedMedia.map((media, i) => {
-						return (
-							<div key={photographer.id + i}>
-								<Media
-									tags={media.tags}
-									name={photographer.name}
-									image={media.image}
-									contentId={media.id}
-									PhotographerId={media.photographerId}
-									likes={media.likes}
-									video={media.video}
-									date={media.date}
-									key={photographer.Id}
-								/>
-							</div>
-						);
-					})}
+					<div className="content-container">
+						{sortedMedia.map((media, i) => {
+							return (
+								<div key={photographer.id + i}>
+									<Media
+										tags={media.tags}
+										name={photographer.name}
+										image={media.image}
+										contentId={media.id}
+										PhotographerId={media.photographerId}
+										likes={media.likes}
+										video={media.video}
+										date={media.date}
+										key={photographer.Id}
+									/>
+								</div>
+							);
+						})}
+					</div>
 				</section>
 			</main>
 		</>

@@ -1,0 +1,77 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+.header-container {
+	@include flexCenter(row);
+	justify-content: space-between;
+	background-color: #fafafa;
+	margin: 3em auto;
+	width: 85%;
+	border-radius: 5px;
+
+	.photographer-details {
+		@include flexCenter(column);
+		display: inline-flex;
+		align-items: flex-start;
+		margin: 2em;
+		flex-wrap: wrap;
+		h1 {
+			font-size: 2.5em;
+			color: $secondary-color;
+			margin: 0.1em 0em;
+		}
+
+		.location {
+			font-size: 1.5em;
+			color: $primary-color;
+			margin: 0.3em 0em;
+		}
+
+		.tagline {
+			font-size: 1.2em;
+			color: #525252;
+			margin: 0.5em;
+			margin: 0.3em 0em;
+		}
+
+		.tag-container {
+			@include flexCenter(row);
+			justify-content: start;
+			margin: 0.5em 0em;
+			.tags {
+				@include tagDefault;
+				padding: 0 0.5em;
+			}
+		}
+	}
+
+	.btn-container {
+		display: flex;
+		justify-self: flex-start;
+		width: 35%;
+		margin-bottom: 5%;
+		button {
+			@include btnDefault;
+			font-size: 1em;
+		}
+		button:hover {
+			@include btnTarget;
+		}
+		button:focus {
+			@include btnTarget;
+		}
+	}
+
+	.profileImg-container {
+		@include flexCenter(none);
+		justify-content: center;
+		margin-right: 15%;
+
+		img {
+			width: 200px;
+			height: 200px;
+			object-fit: cover;
+			border-radius: 50%;
+		}
+	}
+}

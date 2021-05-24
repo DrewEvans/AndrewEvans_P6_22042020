@@ -1,0 +1,10 @@
+@import "../../styles/functions.scss";
+@import "../../styles/variables.scss";
+
+.content-container {
+	@include flexCenter(row);
+	width: 90%;
+	margin: auto;
+	justify-content: space-between;
+	flex-wrap: wrap;
+}
