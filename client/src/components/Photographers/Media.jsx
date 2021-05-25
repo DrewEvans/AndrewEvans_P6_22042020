@@ -1,4 +1,3 @@
-import Image from "react-image-resizer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./media.scss";
@@ -30,13 +29,19 @@ const Media = ({
 					<div className="content-backdrop">
 						<img
 							key={key}
-							src={`../assets/${name}/${image}`}
+							src={`../assets/${name}/compressed/${image}`}
 							alt=""
 						/>
 					</div>
 					<div className="media-details">
 						<p className="content-title">
-							{image.replaceAll(".jpg", "").replaceAll("_", " ")}
+							{image
+								.replaceAll(".jpg", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.replaceAll(/(^\w|\s\w)/g, (m) =>
+									m.toUpperCase()
+								)}
 						</p>
 						<div className="likes-container">
 							<i className="likes">{likes}</i>
@@ -56,7 +61,11 @@ const Media = ({
 					</div>
 					<div className="media-details">
 						<p className="content-title">
-							{video.replaceAll(".mp4", "").replaceAll("_", " ")}
+							{video
+								.replaceAll(".mp4", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.trim()}
 						</p>
 						<div className="likes-container">
 							<i className="likes">{likes}</i>

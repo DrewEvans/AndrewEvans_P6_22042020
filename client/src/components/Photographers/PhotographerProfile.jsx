@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
 import Logo from "../Home/Logo";
+
 import "./photographerprofile.scss";
 
 const PhotographerProfile = ({ match }) => {
@@ -94,6 +95,7 @@ const PhotographerProfile = ({ match }) => {
 						"Loading..."
 					)}
 				</header>
+
 				<section>
 					<select
 						onChange={(e) => {

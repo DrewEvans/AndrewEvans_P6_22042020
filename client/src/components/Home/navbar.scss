@@ -9,12 +9,15 @@ nav {
 
 		button {
 			@include tagDefault;
+			cursor: pointer;
 		}
 		button:hover {
 			@include tagTarget;
+			cursor: pointer;
 		}
 		button[is-selected="true"] {
 			@include tagTarget;
+			cursor: pointer;
 		}
 	}
 }

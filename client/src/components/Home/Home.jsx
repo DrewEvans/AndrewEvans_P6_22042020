@@ -48,6 +48,8 @@ const Home = () => {
 				filter.map((value) => {
 					setFilterPhotographers(
 						photographers.filter(function (photographer) {
+							// console.log(`Value: ${value}`);
+							// console.log(photographer.tags.includes(value));
 							return photographer.tags.includes(value);
 						})
 					);
@@ -57,6 +59,10 @@ const Home = () => {
 		};
 		targetPhotographers(filter, photographers);
 	}, [filter, photographers]);
+
+	console.log(filter);
+	console.log(navTags);
+	console.log(filterPhotographers);
 
 	return (
 		<>

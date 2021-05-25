@@ -57,19 +57,16 @@
 		button:hover {
 			@include btnTarget;
 		}
-		button:focus {
-			@include btnTarget;
-		}
 	}
 
 	.profileImg-container {
-		@include flexCenter(none);
-		justify-content: center;
+		width: 200px;
+		height: 200px;
 		margin-right: 15%;
 
 		img {
-			width: 200px;
-			height: 200px;
+			width: 100%;
+			height: 100%;
 			object-fit: cover;
 			border-radius: 50%;
 		}

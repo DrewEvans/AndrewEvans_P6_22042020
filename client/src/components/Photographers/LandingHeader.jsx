@@ -1,11 +1,6 @@
+import { useState } from "react";
+import ContactModal from "./ContactModal";
 import "./landingHeader.scss";
-
-const profileImage = {
-	height: "200px",
-	width: "200px",
-	objectFit: "cover",
-	borderRadius: "50%",
-};
 
 const LandingHeader = ({
 	photographer,
@@ -17,6 +12,8 @@ const LandingHeader = ({
 	portrait,
 	id,
 }) => {
+	const [isOpen, setIsOpen] = useState(false);
+
 	return (
 		<div className="header-container">
 			<div className="photographer-details">
@@ -40,13 +37,17 @@ const LandingHeader = ({
 				</div>
 			</div>
 			<div className="btn-container">
-				<button>Contactez-moi</button>
+				<button onClick={() => setIsOpen(true)}>Contactez-moi</button>
 			</div>
+			<ContactModal
+				open={isOpen}
+				onClose={() => setIsOpen(false)}
+				name={name}
+			/>
 			<div className="profileImg-container">
 				<img
 					className="profile-pic"
-					// style={profileImage}
-					src={`../assets/Photographers ID Photos/${portrait}`}
+					src={`../assets/Photographers ID Photos/compressed/${portrait}`}
 					alt=""
 				/>
 			</div>

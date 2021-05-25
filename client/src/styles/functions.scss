@@ -27,10 +27,12 @@
 	padding: 1em 0.5em;
 	border: none;
 	border-radius: 5px;
+	cursor: pointer;
 }
 
 @mixin btnTarget {
 	font-weight: 700;
 	color: #000;
 	background-color: $quaternary-color;
+	cursor: pointer;
 }
