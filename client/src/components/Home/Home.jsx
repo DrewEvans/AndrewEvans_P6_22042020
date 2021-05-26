@@ -14,20 +14,24 @@ const Home = () => {
 	const [navTags, setNavTags] = useState([]);
 	const [filter, setFilter] = useState([]);
 
+	//update on compnent render
 	useEffect(() => {
 		fetchPhotographers();
 		fetchPhotographersTags();
 	}, []);
 
+	//fetch photographers
 	async function fetchPhotographers() {
 		const request = await axios.get("/api/photographers");
 		setPhotographers(request.data);
 	}
+	//fetch Unique tags
 	async function fetchPhotographersTags() {
 		const request = await axios.get("/api/photographers/tags");
 		setNavTags(request.data);
 	}
 
+	// listen to when user clicks a filter
 	const handleBtns = (e) => {
 		// for collecting siblings
 		let siblings = [];
@@ -56,33 +60,26 @@ const Home = () => {
 		setFilter(e.target.value);
 	};
 
+	//rerender photographers when user triggers a filter
 	useEffect(() => {
-		const targetPhotographers = (filterTag, photographers) => {
+		const photographersByTag = (filterTag, photographers) => {
 			// if no filter selected display all photographers
 
-			if (filterTag) {
+			if (filterTag.length > 0) {
 				// if filter selected display photographers with filter tag
 				const result = photographers.filter((photographer) => {
-					return photographer.tags === filterTag;
+					//look for filterTag in array and update return updated array
+					return photographer.tags.indexOf(filterTag) > -1;
 				});
-				//set state as filtered photographers
+				// set state to filtered list
 				setFilterPhotographers(result);
+			} else {
+				//set state to all photographers
+				setFilterPhotographers(photographers);
 			}
-			setFilterPhotographers(photographers);
 		};
-		targetPhotographers(filter, photographers);
+		photographersByTag(filter, photographers);
 	}, [filter, photographers]);
-
-	// 	filter.map((value) => {
-	// 		setFilterPhotographers(
-	// 			photographers.filter(function (photographer) {
-	// 				return photographer.tags.includes(value);
-	// 			})
-	// 		);
-	// 		return photographers;
-	// 	});
-	// } else setFilterPhotographers(photographers);
-	// };
 
 	return (
 		<>
