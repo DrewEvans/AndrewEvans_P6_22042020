@@ -29,40 +29,60 @@ const Home = () => {
 	}
 
 	const handleBtns = (e) => {
-		if (!e.target.hasAttribute("is-selected")) {
-			e.target.setAttribute("is-selected", true);
-			setFilter((filter) => [...filter, e.target.value]);
-		} else {
-			e.target.removeAttribute("is-selected");
-			const removeTag = (e) => {
-				let filterTags = filter.filter((tag) => tag !== e.target.value);
-				setFilter(() => [...filterTags]);
-			};
-			removeTag(e);
+		// for collecting siblings
+		let siblings = [];
+		// if no parent, return no sibling
+		if (!e.target.parentNode) {
+			return siblings;
 		}
+		// first child of the parent node
+		let sibling = e.target.parentNode.firstChild;
+
+		// collecting siblings
+		while (sibling) {
+			if (sibling.nodeType === 1 && sibling !== e.target) {
+				siblings.push(sibling);
+			}
+			sibling = sibling.nextSibling;
+		}
+		// on user click remove filters on siblings
+		if (e.isTrusted) {
+			siblings.forEach((sibling) => {
+				sibling.removeAttribute("is-selected");
+			});
+		}
+		//set the new target filter
+		e.target.setAttribute("is-selected", true);
+		setFilter(e.target.value);
 	};
 
 	useEffect(() => {
-		const targetPhotographers = (value, objects) => {
-			if (filter.length > 0) {
-				filter.map((value) => {
-					setFilterPhotographers(
-						photographers.filter(function (photographer) {
-							// console.log(`Value: ${value}`);
-							// console.log(photographer.tags.includes(value));
-							return photographer.tags.includes(value);
-						})
-					);
-					return photographers;
-				});
-			} else setFilterPhotographers(photographers);
+		const targetPhotographers = (filterTag, photographers) => {
+			// if no filter selected display all photographers
+			if (!filterTag) {
+				// set state with all photographers
+				setFilterPhotographers(photographers);
+			}
+			// ig filter selected display photographers with filter tag
+			const result = photographers.filter((photographer) => {
+				return photographer.tags === filterTag;
+			});
+			//set state as filtered photographers
+			setFilterPhotographers(result);
 		};
 		targetPhotographers(filter, photographers);
 	}, [filter, photographers]);
 
-	console.log(filter);
-	console.log(navTags);
-	console.log(filterPhotographers);
+	// 	filter.map((value) => {
+	// 		setFilterPhotographers(
+	// 			photographers.filter(function (photographer) {
+	// 				return photographer.tags.includes(value);
+	// 			})
+	// 		);
+	// 		return photographers;
+	// 	});
+	// } else setFilterPhotographers(photographers);
+	// };
 
 	return (
 		<>
