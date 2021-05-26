@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./media.scss";
@@ -14,6 +15,7 @@ const Media = ({
 	key,
 	openmodal,
 }) => {
+	const [userLikes, setUserLikes] = useState(likes);
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
 
 	return (
@@ -45,8 +47,13 @@ const Media = ({
 								)}
 						</p>
 						<div className="likes-container">
-							<i className="likes">{likes}</i>
-							<span className="heart-icon">{heartIcon}</span>
+							<i className="likes">{userLikes}</i>
+							<span
+								onClick={() => setUserLikes(userLikes + 1)}
+								className="heart-icon"
+							>
+								{heartIcon}
+							</span>
 						</div>
 					</div>
 				</div>
@@ -69,8 +76,13 @@ const Media = ({
 								.trim()}
 						</p>
 						<div className="likes-container">
-							<i className="likes">{likes}</i>
-							<span className="heart-icon">{heartIcon}</span>
+							<i className="likes">{userLikes}</i>
+							<span
+								onClick={() => setUserLikes(userLikes + 1)}
+								className="heart-icon"
+							>
+								{heartIcon}
+							</span>
 						</div>
 					</div>
 				</div>
