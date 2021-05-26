@@ -12,6 +12,7 @@ const Media = ({
 	date,
 	contentId,
 	key,
+	openmodal,
 }) => {
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
 
@@ -26,7 +27,7 @@ const Media = ({
 							width={200}
 							height={200}
 						/> */}
-					<div className="content-backdrop">
+					<div onClick={openmodal} className="content-backdrop">
 						<img
 							key={key}
 							src={`../assets/${name}/compressed/${image}`}

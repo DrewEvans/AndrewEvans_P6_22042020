@@ -1,15 +1,6 @@
 import { NavLink } from "react-router-dom";
 import "./photographercard.scss";
 
-const style = {
-	image: {
-		height: "200px",
-		width: "200px",
-		objectFit: "contain",
-		borderRadius: "50%",
-	},
-};
-
 const PhotographerCard = ({
 	name,
 	city,

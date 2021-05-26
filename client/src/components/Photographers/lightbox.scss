@@ -1,0 +1,52 @@
+@import "../../styles/variables.scss";
+@import "../../styles/functions.scss";
+
+.lightbox-container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	width: 85%;
+	height: 85%;
+	padding: 15px 20px 20px 20px;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 2px solid #95fff9;
+	z-index: 100;
+	@include flexCenter(row);
+	justify-content: space-evenly;
+
+	.modal-cross {
+		font-size: 32px;
+		color: $primary-color;
+		position: fixed;
+		top: 3%;
+		right: 1%;
+		background-color: transparent;
+		border: none;
+		align-self: flex-end;
+		cursor: pointer;
+	}
+
+	.left-arrow-container,
+	.right-arrow-container {
+		margin: 0.2em;
+		font-size: 2.5em;
+		color: $primary-color;
+
+		span {
+			padding: 0.2em;
+			cursor: pointer;
+		}
+	}
+
+	.img-container {
+		height: 98%;
+		width: 95%;
+
+		img {
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+}

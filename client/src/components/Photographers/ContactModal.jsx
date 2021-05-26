@@ -36,12 +36,12 @@ const ContactModal = ({ open, onClose, name }) => {
 					</div>
 				</div>
 
-				<submit
+				<input
+					type="submit"
+					value="Envoyer"
 					className="submit-btn"
 					onClick={(e) => e.preventDefault}
-				>
-					Envoyer
-				</submit>
+				/>
 			</div>
 		</>
 	);

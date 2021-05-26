@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
 import Logo from "../Home/Logo";
+import Lightbox from "./Lightbox";
 
 import "./photographerprofile.scss";
 
@@ -75,6 +76,17 @@ const PhotographerProfile = ({ match }) => {
 		sortArray(sortType);
 	}, [sortType, allMedia]);
 
+	const [modalIsOpen, setModalIsOpen] = useState(false);
+	const [lightboxImage, setLightboxImage] = useState();
+
+	const handleClick = (e) => {
+		setModalIsOpen(true);
+		setLightboxImage(e.target.currentSrc);
+		console.log(e.nativeEvent.path[4].childNodes);
+	};
+
+	console.log(lightboxImage);
+
 	return (
 		<>
 			<Logo />
@@ -106,11 +118,17 @@ const PhotographerProfile = ({ match }) => {
 						<option value="date">Date</option>
 						<option value="image">Titre</option>
 					</select>
+					<Lightbox
+						openmodal={modalIsOpen}
+						closemodal={() => setModalIsOpen(false)}
+						image={lightboxImage}
+					/>
 					<div className="content-container">
 						{sortedMedia.map((media, i) => {
 							return (
 								<div key={photographer.id + i}>
 									<Media
+										openmodal={handleClick}
 										tags={media.tags}
 										name={photographer.name}
 										image={media.image}
