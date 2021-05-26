@@ -59,16 +59,16 @@ const Home = () => {
 	useEffect(() => {
 		const targetPhotographers = (filterTag, photographers) => {
 			// if no filter selected display all photographers
-			if (!filterTag) {
-				// set state with all photographers
-				setFilterPhotographers(photographers);
+
+			if (filterTag) {
+				// if filter selected display photographers with filter tag
+				const result = photographers.filter((photographer) => {
+					return photographer.tags === filterTag;
+				});
+				//set state as filtered photographers
+				setFilterPhotographers(result);
 			}
-			// ig filter selected display photographers with filter tag
-			const result = photographers.filter((photographer) => {
-				return photographer.tags === filterTag;
-			});
-			//set state as filtered photographers
-			setFilterPhotographers(result);
+			setFilterPhotographers(photographers);
 		};
 		targetPhotographers(filter, photographers);
 	}, [filter, photographers]);
