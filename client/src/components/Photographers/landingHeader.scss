@@ -47,9 +47,10 @@
 
 	.btn-container {
 		display: flex;
+		position: relative;
 		justify-self: flex-start;
 		width: 35%;
-		margin-bottom: 5%;
+
 		button {
 			@include btnDefault;
 			font-size: 1em;
@@ -62,8 +63,8 @@
 	.profileImg-container {
 		width: 200px;
 		height: 200px;
-		margin-right: 15%;
-
+		position: relative;
+		margin-right: 100px;
 		img {
 			width: 100%;
 			height: 100%;

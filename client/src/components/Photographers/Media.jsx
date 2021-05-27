@@ -18,6 +18,13 @@ const Media = ({
 	const [userLikes, setUserLikes] = useState(likes);
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
 
+	// const handleLikes = (e) => {
+	// 	//if user clicks heart
+	// 	//increament userlikes by + 1
+	// 	//if user clicks heart for second time
+	// 	//decrement reset to prevState
+	// };
+
 	return (
 		<>
 			{image && (
@@ -29,8 +36,13 @@ const Media = ({
 							width={200}
 							height={200}
 						/> */}
-					<div onClick={openmodal} className="content-backdrop">
+					<div
+						onClick={openmodal}
+						value="current"
+						className="content-backdrop"
+					>
 						<img
+							id="img-display"
 							key={key}
 							src={`../assets/${name}/compressed/${image}`}
 							alt=""

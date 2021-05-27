@@ -42,7 +42,7 @@ const Home = () => {
 		// first child of the parent node
 		let sibling = e.target.parentNode.firstChild;
 
-		// collecting siblings
+		// collecting siblingsddaa
 		while (sibling) {
 			if (sibling.nodeType === 1 && sibling !== e.target) {
 				siblings.push(sibling);
@@ -86,10 +86,7 @@ const Home = () => {
 			<header>
 				<div className="nav-container">
 					<Logo />
-
 					<Navbar navTags={navTags} handleBtns={handleBtns} />
-				</div>
-				<div className="h1-container">
 					<h1 className="title">Nos photographes</h1>
 				</div>
 			</header>

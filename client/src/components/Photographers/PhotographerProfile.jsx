@@ -77,15 +77,47 @@ const PhotographerProfile = ({ match }) => {
 	}, [sortType, allMedia]);
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const [lightboxImage, setLightboxImage] = useState();
+	const [currentImage, setCurrentImage] = useState();
+	const [prevImage, setPrevImage] = useState();
+	const [nextImage, setNextImage] = useState();
+	const [imageIndex, setImageIndex] = useState();
 
 	const handleClick = (e) => {
 		setModalIsOpen(true);
-		setLightboxImage(e.target.currentSrc);
-		console.log(e.nativeEvent.path[4].childNodes);
+
+		let images = sortedMedia.map((images) => {
+			return images.image;
+		});
+
+		let clickedImage = e.target.currentSrc;
+
+		clickedImage = clickedImage.split(/(\\|\/)/g).pop();
+
+		setCurrentImage(clickedImage);
+		setImageIndex(images.indexOf(currentImage));
+
+		setPrevImage(images[imageIndex - 1]);
+		setNextImage(images[imageIndex + 1]);
 	};
 
-	console.log(lightboxImage);
+	const moveBackward = (e) => {
+		if (e.isTrusted && prevImage === undefined) {
+			return false;
+		} else {
+			setCurrentImage(prevImage);
+		}
+	};
+	const moveForward = (e) => {
+		if (e.isTrusted && nextImage === undefined) {
+			return false;
+		} else {
+			setCurrentImage(nextImage);
+		}
+	};
+
+	console.log(`im previous ${prevImage}`);
+	console.log(`im current:${currentImage}`);
+	console.log(`im next: ${nextImage}`);
 
 	return (
 		<>
@@ -121,7 +153,10 @@ const PhotographerProfile = ({ match }) => {
 					<Lightbox
 						openmodal={modalIsOpen}
 						closemodal={() => setModalIsOpen(false)}
-						image={lightboxImage}
+						image={currentImage}
+						name={photographer.name}
+						moveBackward={moveBackward}
+						moveForward={moveForward}
 					/>
 					<div className="content-container">
 						{sortedMedia.map((media, i) => {
