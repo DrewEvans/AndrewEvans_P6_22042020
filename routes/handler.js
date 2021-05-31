@@ -14,7 +14,6 @@ router.get("/photographers/tags", (req, res) => {
 	});
 	//create new array removing deduping from tags array
 	const uniqueTags = [...new Set(tags)];
-	console.log(uniqueTags);
 	res.send(uniqueTags);
 });
 

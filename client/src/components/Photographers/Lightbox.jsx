@@ -8,7 +8,7 @@ import {
 import "./lightbox.scss";
 
 export default function Lightbox({
-	openmodal,
+	openModal,
 	closemodal,
 	image,
 	name,
@@ -19,7 +19,7 @@ export default function Lightbox({
 	const rightAngle = <FontAwesomeIcon icon={faAngleRight} />;
 	const leftAngle = <FontAwesomeIcon icon={faAngleLeft} />;
 
-	if (!openmodal) {
+	if (!openModal) {
 		return null;
 	}
 	return (
@@ -33,14 +33,21 @@ export default function Lightbox({
 					{leftAngle}
 				</span>
 			</div>
-			{/* <h1>I am lightbox hear me roar</h1> */}
 
 			<div className="img-container">
-				<img
-					id="lightbox-img"
-					src={`../assets/${name}/compressed/${image}`}
-					alt=""
-				/>
+				{image.includes(".jpg") ? (
+					<img
+						id="lightbox-img"
+						src={`../assets/${name}/compressed/${image}`}
+						alt=""
+					/>
+				) : (
+					<video
+						controls
+						src={`../assets/${name}/${image}`}
+						type="video/mp4"
+					/>
+				)}
 			</div>
 			<div className="right-arrow-container">
 				<span id="next-click" onClick={moveForward}>

@@ -78,46 +78,44 @@ const PhotographerProfile = ({ match }) => {
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [currentImage, setCurrentImage] = useState();
-	const [prevImage, setPrevImage] = useState();
-	const [nextImage, setNextImage] = useState();
-	const [imageIndex, setImageIndex] = useState();
 
-	const handleClick = (e) => {
+	let clickedImage;
+
+	const openModal = (e) => {
 		setModalIsOpen(true);
-
-		let images = sortedMedia.map((images) => {
-			return images.image;
-		});
-
-		let clickedImage = e.target.currentSrc;
-
+		clickedImage = e.target.currentSrc;
 		clickedImage = clickedImage.split(/(\\|\/)/g).pop();
-
 		setCurrentImage(clickedImage);
-		setImageIndex(images.indexOf(currentImage));
-
-		setPrevImage(images[imageIndex - 1]);
-		setNextImage(images[imageIndex + 1]);
 	};
 
 	const moveBackward = (e) => {
-		if (e.isTrusted && prevImage === undefined) {
-			return false;
-		} else {
-			setCurrentImage(prevImage);
-		}
+		e.isTrusted ? displayImages(-1) : console.log(false);
 	};
 	const moveForward = (e) => {
-		if (e.isTrusted && nextImage === undefined) {
-			return false;
-		} else {
-			setCurrentImage(nextImage);
+		e.isTrusted ? displayImages(1) : console.log(false);
+	};
+
+	let imageIndex;
+
+	const displayImages = (n) => {
+		let allContent = sortedMedia.map((content) => {
+			if (content.image) {
+				return content.image;
+			}
+			if (content.video) {
+				return content.video;
+			}
+			return content;
+		});
+
+		imageIndex = allContent.indexOf(currentImage);
+
+		if (n) {
+			setCurrentImage(allContent[(imageIndex += n)]);
 		}
 	};
 
-	console.log(`im previous ${prevImage}`);
-	console.log(`im current:${currentImage}`);
-	console.log(`im next: ${nextImage}`);
+	displayImages(imageIndex);
 
 	return (
 		<>
@@ -151,7 +149,7 @@ const PhotographerProfile = ({ match }) => {
 						<option value="image">Titre</option>
 					</select>
 					<Lightbox
-						openmodal={modalIsOpen}
+						openModal={modalIsOpen}
 						closemodal={() => setModalIsOpen(false)}
 						image={currentImage}
 						name={photographer.name}
@@ -163,7 +161,7 @@ const PhotographerProfile = ({ match }) => {
 							return (
 								<div key={photographer.id + i}>
 									<Media
-										openmodal={handleClick}
+										openmodal={openModal}
 										tags={media.tags}
 										name={photographer.name}
 										image={media.image}

@@ -4,6 +4,7 @@
 .content-container {
 	@include flexCenter(row);
 	width: 90%;
-	justify-content: space-between;
+	margin: 0 auto;
+	// justify-content: space-between;
 	flex-wrap: wrap;
 }
