@@ -5,6 +5,10 @@ import "./contactmodal.scss";
 const ContactModal = ({ open, onClose, name }) => {
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 
+	const handleSubmit = (e) => {
+		e.preventDefault();
+	};
+
 	if (!open) return null;
 	return (
 		<>
@@ -40,7 +44,7 @@ const ContactModal = ({ open, onClose, name }) => {
 					type="submit"
 					value="Envoyer"
 					className="submit-btn"
-					onClick={(e) => e.preventDefault}
+					onClick={handleSubmit}
 				/>
 			</div>
 		</>

@@ -92,7 +92,7 @@ const PhotographerProfile = ({ match }) => {
 		e.isTrusted ? displayImages(-1) : console.log(false);
 	};
 	const moveForward = (e) => {
-		e.isTrusted ? displayImages(1) : console.log(false);
+		e.isTrusted ? displayImages(+1) : console.log(false);
 	};
 
 	let imageIndex;
@@ -108,10 +108,26 @@ const PhotographerProfile = ({ match }) => {
 			return content;
 		});
 
-		imageIndex = allContent.indexOf(currentImage);
+		const proxy = new Proxy(allContent, {
+			get(target, prop) {
+				if (!isNaN(prop)) {
+					prop = parseInt(prop, 10);
+					if (prop < 0) {
+						prop += target.length;
+					}
+				}
+				return target[prop];
+			},
+		});
+
+		imageIndex = proxy.indexOf(currentImage);
 
 		if (n) {
-			setCurrentImage(allContent[(imageIndex += n)]);
+			setCurrentImage(proxy[(imageIndex += n)]);
+		}
+
+		if (imageIndex + 1 > proxy.length) {
+			setCurrentImage(proxy[0]);
 		}
 	};
 
