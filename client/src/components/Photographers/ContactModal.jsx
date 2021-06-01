@@ -1,13 +1,12 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import "./contactmodal.scss";
+import useForm from "../../hooks/useForm";
+import validate from "../../functions/validateValues";
 
 const ContactModal = ({ open, onClose, name }) => {
+	const { handleChange, values, handleSubmit, errors } = useForm(validate);
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
-
-	const handleSubmit = (e) => {
-		e.preventDefault();
-	};
 
 	if (!open) return null;
 	return (
@@ -21,31 +20,62 @@ const ContactModal = ({ open, onClose, name }) => {
 						<h1>Contactez-moi</h1>
 						<h2>{name}</h2>
 					</div>
-					<div className="user-details">
-						<label htmlFor="">{"Prénom"}</label>
-						<input type="text" />
-						<label htmlFor="">{"Nom"}</label>
-						<input type="text" />
-						<label htmlFor="">{"Email"}</label>
-						<input type="email" />
-						<label htmlFor="">{"Votre message"}</label>
-						<textarea
-							type="text"
-							name=""
-							id=""
-							rows="6"
-							cols="45"
-							wrap="hard"
+					<form className="user-details" onSubmit={handleSubmit}>
+						<div className="form-group">
+							<label htmlFor="firstName">{"Prénom"}</label>
+							<input
+								id="firstName"
+								name="firstName"
+								className="form-control"
+								type="text"
+								value={values.firstName}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="lastName">{"Nom"}</label>
+							<input
+								id="lastName"
+								name="lastName"
+								className="form-control"
+								type="text"
+								value={values.lastName}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="email">{"Email"}</label>
+							<input
+								id="email"
+								name="email"
+								className="form-control"
+								type="email"
+								value={values.email}
+								onChange={handleChange}
+							/>
+						</div>
+						<div className="form-group">
+							<label htmlFor="message">{"Votre message"}</label>
+							<textarea
+								id="message"
+								name="message"
+								className="form-control"
+								type="text"
+								value={values.message}
+								onChange={handleChange}
+								rows="6"
+								cols="45"
+								wrap="hard"
+							/>
+						</div>
+						<input
+							type="submit"
+							value="Envoyer"
+							className="submit-btn-input"
+							onClick={handleSubmit}
 						/>
-					</div>
+					</form>
 				</div>
-
-				<input
-					type="submit"
-					value="Envoyer"
-					className="submit-btn"
-					onClick={handleSubmit}
-				/>
 			</div>
 		</>
 	);
