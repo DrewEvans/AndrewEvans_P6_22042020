@@ -1,13 +1,17 @@
-const SelectionFilter = ({ onChange }) => {
-	console.log(onChange);
+import "./selectionFilter.scss";
+
+const SelectionFilter = ({ handleClickItem }) => {
 	return (
-		<>
-			<select>
-				<option value="likes">Popularité</option>
+		<div className="wrapper">
+			<p className="header">Trier par</p>
+			<select onChange={handleClickItem}>
+				<option className="item" value="likes">
+					Popularité
+				</option>
 				<option value="date">Date</option>
 				<option value="image">Titre</option>
 			</select>
-		</>
+		</div>
 	);
 };
 

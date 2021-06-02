@@ -6,6 +6,7 @@ import Logo from "../Home/Logo";
 import Lightbox from "./Lightbox";
 
 import "./photographerprofile.scss";
+import SelectionFilter from "./SelectionFilter";
 
 const PhotographerProfile = ({ match }) => {
 	const ID = parseInt(match.params.id);
@@ -34,6 +35,10 @@ const PhotographerProfile = ({ match }) => {
 		const data = request.data;
 		setAllMedia(data);
 	}
+
+	const handleClickItem = (e) => {
+		setSortType(e.target.value);
+	};
 
 	useEffect(() => {
 		const sortArray = (type) => {
@@ -155,15 +160,7 @@ const PhotographerProfile = ({ match }) => {
 				</header>
 
 				<section>
-					<select
-						onChange={(e) => {
-							setSortType(e.target.value);
-						}}
-					>
-						<option value="likes">Popularité</option>
-						<option value="date">Date</option>
-						<option value="image">Titre</option>
-					</select>
+					<SelectionFilter handleClickItem={handleClickItem} />
 					<Lightbox
 						openModal={modalIsOpen}
 						closemodal={() => setModalIsOpen(false)}

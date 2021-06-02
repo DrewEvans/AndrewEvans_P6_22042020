@@ -2,7 +2,6 @@ const express = require("express");
 
 const router = express.Router();
 const data = require("../FishEyeData.json");
-const bodyParser = require("body-parser");
 const app = express();
 
 //array of all unique tags given by the photographers
@@ -645,7 +644,6 @@ router.get("/photographers/:id/media", (req, res) => {
 });
 
 router.post("/contactForm/submit", (req, res) => {
-	console.dir(req.body);
 	res.send("data recieved");
 });
 

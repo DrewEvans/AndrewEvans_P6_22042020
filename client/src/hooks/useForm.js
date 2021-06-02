@@ -23,8 +23,6 @@ const useForm = (validate, id, onClose) => {
 
 		setErrors(validate(values));
 
-		console.log(errors);
-
 		if (!errors.firstName && !errors.lastName && !errors.email) {
 			axios
 				.post("/api/contactForm/submit", {
@@ -42,10 +40,13 @@ const useForm = (validate, id, onClose) => {
 				.catch((error) => {
 					console.log(error);
 				});
+			console.log(
+				`firstName: ${values.firstName} lastname: ${values.lastName} Email: ${values.email} Message:${values.message} `
+			);
 
 			onClose();
 		} else {
-			console.log("fail");
+			return null;
 		}
 	};
 
