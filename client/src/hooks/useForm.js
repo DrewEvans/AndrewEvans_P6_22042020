@@ -23,14 +23,18 @@ const useForm = (validate, id, onClose) => {
 
 		setErrors(validate(values));
 
-		if (!!errors) {
+		console.log(errors);
+
+		if (!errors.firstName && !errors.lastName && !errors.email) {
 			axios
-				.post("/api/contactForm", {
-					firstName: values.firstName,
-					lastName: values.lastName,
-					email: values.email,
-					message: values.message,
-					photographerId: id,
+				.post("/api/contactForm/submit", {
+					contactForm: {
+						firstName: values.firstName,
+						lastName: values.lastName,
+						email: values.email,
+						message: values.message,
+						photographerId: id,
+					},
 				})
 				.then((res) => {
 					console.log(res);
@@ -40,8 +44,8 @@ const useForm = (validate, id, onClose) => {
 				});
 
 			onClose();
-
-			contactForm.setAttribute("form-submitted", true);
+		} else {
+			console.log("fail");
 		}
 	};
 
