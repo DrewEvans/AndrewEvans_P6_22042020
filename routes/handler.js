@@ -643,6 +643,10 @@ router.get("/photographers/:id/media", (req, res) => {
 	res.send(photographerMedia);
 });
 
+router.post("/contactForm", (req, res) => {
+	res.send("data recieved");
+});
+
 app.listen(80, function () {
 	console.log("CORS-enabled web server listening on port 80");
 });

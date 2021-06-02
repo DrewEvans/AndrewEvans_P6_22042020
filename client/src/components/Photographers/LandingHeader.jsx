@@ -43,6 +43,7 @@ const LandingHeader = ({
 				open={isOpen}
 				onClose={() => setIsOpen(false)}
 				name={name}
+				id={id}
 			/>
 			<div className="profileImg-container">
 				<img

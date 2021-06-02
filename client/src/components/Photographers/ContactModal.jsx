@@ -4,8 +4,12 @@ import "./contactmodal.scss";
 import useForm from "../../hooks/useForm";
 import validate from "../../functions/validateValues";
 
-const ContactModal = ({ open, onClose, name }) => {
-	const { handleChange, values, handleSubmit, errors } = useForm(validate);
+const ContactModal = ({ open, onClose, name, id }) => {
+	const { handleChange, values, handleSubmit, errors } = useForm(
+		validate,
+		id,
+		onClose
+	);
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 
 	if (!open) return null;
@@ -31,6 +35,9 @@ const ContactModal = ({ open, onClose, name }) => {
 								value={values.firstName}
 								onChange={handleChange}
 							/>
+							{errors.firstName && (
+								<p className="error-msg">*{errors.firstName}</p>
+							)}
 						</div>
 						<div className="form-group">
 							<label htmlFor="lastName">{"Nom"}</label>
@@ -42,6 +49,9 @@ const ContactModal = ({ open, onClose, name }) => {
 								value={values.lastName}
 								onChange={handleChange}
 							/>
+							{errors.lastName && (
+								<p className="error-msg">*{errors.lastName}</p>
+							)}
 						</div>
 						<div className="form-group">
 							<label htmlFor="email">{"Email"}</label>
@@ -53,6 +63,9 @@ const ContactModal = ({ open, onClose, name }) => {
 								value={values.email}
 								onChange={handleChange}
 							/>
+							{errors.email && (
+								<p className="error-msg">*{errors.email}</p>
+							)}
 						</div>
 						<div className="form-group">
 							<label htmlFor="message">{"Votre message"}</label>
