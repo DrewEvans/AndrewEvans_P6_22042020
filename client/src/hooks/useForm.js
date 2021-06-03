@@ -26,13 +26,11 @@ const useForm = (validate, id, onClose) => {
 		if (!errors.firstName && !errors.lastName && !errors.email) {
 			axios
 				.post("/api/contactForm/submit", {
-					contactForm: {
-						firstName: values.firstName,
-						lastName: values.lastName,
-						email: values.email,
-						message: values.message,
-						photographerId: id,
-					},
+					firstName: values.firstName,
+					lastName: values.lastName,
+					email: values.email,
+					message: values.message,
+					photographerId: id,
 				})
 				.then((res) => {
 					console.log(res);

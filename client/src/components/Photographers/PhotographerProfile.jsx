@@ -7,6 +7,7 @@ import Lightbox from "./Lightbox";
 
 import "./photographerprofile.scss";
 import SelectionFilter from "./SelectionFilter";
+import PhotograpgherHighlights from "./PhotograpgherHighlights";
 
 const PhotographerProfile = ({ match }) => {
 	const ID = parseInt(match.params.id);
@@ -138,6 +139,11 @@ const PhotographerProfile = ({ match }) => {
 
 	displayImages(imageIndex);
 
+	let totalLikes = 0;
+	sortedMedia.forEach((e) => {
+		totalLikes += e.likes;
+	});
+
 	return (
 		<>
 			<Logo />
@@ -190,6 +196,14 @@ const PhotographerProfile = ({ match }) => {
 						})}
 					</div>
 				</section>
+				{photographer ? (
+					<PhotograpgherHighlights
+						likes={totalLikes}
+						price={photographer.price}
+					/>
+				) : (
+					"Loading..."
+				)}
 			</main>
 		</>
 	);

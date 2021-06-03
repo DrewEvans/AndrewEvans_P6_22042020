@@ -3,8 +3,24 @@
 
 .content-container {
 	@include flexCenter(row);
+	justify-content: space-between;
 	width: 90%;
 	margin: 0 auto;
 	// justify-content: space-between;
 	flex-wrap: wrap;
+
+	@include phone {
+		justify-content: center;
+		margin: 0 auto;
+		width: auto;
+		align-items: center;
+		justify-items: center;
+	}
+	@include tablet {
+		justify-content: space-around;
+		margin: 0;
+		width: auto;
+		align-items: center;
+		justify-items: center;
+	}
 }

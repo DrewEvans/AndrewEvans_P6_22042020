@@ -4,7 +4,7 @@ const routesHandler = require("./routes/handler");
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }));
-express.json();
+app.use(express.json({ limit: "1mb" }));
 
 //static files & api data
 app.use("/api", routesHandler);

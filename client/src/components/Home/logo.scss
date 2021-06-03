@@ -1,0 +1,11 @@
+@import "../../styles/functions.scss";
+@import "../../styles/variables.scss";
+
+.logo-container {
+	margin: 1em;
+	img {
+		@include phone {
+			height: 36px;
+		}
+	}
+}

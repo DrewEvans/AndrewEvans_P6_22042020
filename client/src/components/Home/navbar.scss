@@ -7,6 +7,12 @@ nav {
 		flex-wrap: wrap;
 		width: 450px;
 
+		@include phone {
+			margin-top: 1em;
+			width: 100%;
+			margin: 1em auto;
+		}
+
 		button {
 			@include tagDefault;
 			cursor: pointer;

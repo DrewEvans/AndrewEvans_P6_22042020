@@ -1,3 +1,9 @@
+@import "./styles/functions.scss";
+
 body {
 	margin: 2em;
+
+	@include phone {
+		margin: 0;
+	}
 }

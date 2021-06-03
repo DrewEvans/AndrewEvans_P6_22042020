@@ -9,22 +9,58 @@
 	width: 85%;
 	border-radius: 5px;
 
+	@include phone {
+		margin: 1.5em auto;
+		width: 95%;
+		background-color: white;
+	}
+
+	@include tablet {
+		margin: 1.5em auto;
+		width: 95%;
+		background-color: white;
+	}
+
 	.photographer-details {
 		@include flexCenter(column);
 		display: inline-flex;
 		align-items: flex-start;
 		margin: 2em;
 		flex-wrap: wrap;
+		@include phone {
+			margin: 0.25em;
+			width: 75%;
+		}
+
+		@include tablet {
+			margin: 0.25em;
+			width: 75%;
+		}
+
 		h1 {
 			font-size: 2.5em;
 			color: $secondary-color;
 			margin: 0.1em 0em;
+			@include phone {
+				font-size: 1.9em;
+				font-weight: 400;
+				margin: 0;
+			}
+			@include tablet {
+				font-size: 1.9em;
+				font-weight: 400;
+				margin: 0;
+			}
 		}
 
 		.location {
 			font-size: 1.5em;
 			color: $primary-color;
 			margin: 0.3em 0em;
+			@include phone {
+				font-size: 1em;
+				margin: 0;
+			}
 		}
 
 		.tagline {
@@ -32,15 +68,25 @@
 			color: #525252;
 			margin: 0.5em;
 			margin: 0.3em 0em;
+			@include phone {
+				font-size: 0.9em;
+			}
 		}
 
 		.tag-container {
 			@include flexCenter(row);
 			justify-content: start;
 			margin: 0.5em 0em;
+			@include phone {
+				margin: 0.1em 0em;
+			}
+
 			.tags {
 				@include tagDefault;
 				padding: 0 0.5em;
+				@include phone {
+					font-size: 0.9em;
+				}
 			}
 		}
 	}
@@ -49,7 +95,7 @@
 		display: flex;
 		position: relative;
 		justify-self: flex-start;
-		width: 35%;
+		width: 30%;
 
 		button {
 			@include btnDefault;
@@ -58,13 +104,42 @@
 		button:hover {
 			@include btnTarget;
 		}
+
+		@include phone {
+			position: fixed;
+			bottom: 4%;
+			margin: auto 32%;
+		}
+		@include tablet {
+			position: fixed;
+			bottom: 4%;
+			margin: auto 32%;
+		}
 	}
 
 	.profileImg-container {
 		width: 200px;
 		height: 200px;
+		margin-right: 2.5em;
 		position: relative;
-		margin-right: 100px;
+		align-self: center;
+		justify-self: flex-start;
+
+		@include phone {
+			width: 84px;
+			height: 84px;
+			position: relative;
+			margin: 0.25em;
+			align-self: flex-start;
+		}
+		@include tablet {
+			width: 150px;
+			height: 150px;
+			position: relative;
+			margin: 0.25em;
+			align-self: flex-start;
+		}
+
 		img {
 			width: 100%;
 			height: 100%;

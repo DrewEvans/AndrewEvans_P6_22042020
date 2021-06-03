@@ -13,12 +13,19 @@
 	z-index: 100;
 	@include flexCenter(column);
 
+	@include phone {
+		height: 100%;
+	}
+	@include tablet {
+		height: 90%;
+	}
+
 	.modal-cross {
 		font-size: 32px;
 		color: #fff;
 		position: fixed;
 		top: 5%;
-		right: 10%;
+		right: 5%;
 		background-color: transparent;
 		border: none;
 		align-self: flex-end;
@@ -27,7 +34,6 @@
 
 	.contact-form {
 		@include flexCenter(column);
-		align-self: flex-start;
 
 		.form-title {
 			align-self: flex-start;
@@ -37,36 +43,66 @@
 				font-size: 2em;
 				font-weight: 500;
 				margin: 0;
+
+				@include phone {
+					margin-bottom: 0.5em;
+				}
+				@include tablet {
+					margin-bottom: 0.5em;
+				}
+			}
+
+			@include phone {
+				margin-bottom: 1em;
+			}
+			@include tablet {
+				margin-bottom: 1em;
 			}
 		}
 
 		.user-details {
 			@include flexCenter(column);
-			align-self: flex-start;
 
 			label {
 				color: #312e2e;
 				font-weight: 500;
 				font-size: 1.2em;
 				align-self: flex-start;
-				margin: 0.05em 0;
+				margin: 0.5em 0;
 			}
 			input {
 				align-self: flex-start;
 				font-size: 1em;
-				width: 320px;
+				margin-bottom: 0.5em;
+				width: 350px;
 				height: 30px;
 				border: none;
 				border-radius: 5px;
+
+				@include phone {
+					margin-bottom: 1.5em;
+					height: 35px;
+				}
+				@include tablet {
+					margin-bottom: 0.5em;
+					height: 30px;
+				}
 			}
 			textarea {
 				font-size: 1em;
 				font-family: sans-serif;
-				width: 320px;
+				width: 350px;
+				height: 200px;
 				border: none;
 				border-radius: 5px;
 				resize: none;
 				align-self: flex-start;
+				@include phone {
+					margin-bottom: 1.5em;
+				}
+				@include tablet {
+					margin-bottom: 1em;
+				}
 			}
 			.error-msg {
 				font-size: 0.9em;
@@ -88,4 +124,16 @@
 	position: relative;
 	margin: 0.5em 0;
 	align-self: flex-start;
+
+	@include phone {
+		margin-top: 2em;
+		z-index: 10000;
+	}
+
+	@include tablet {
+		position: relative;
+		bottom: 0%;
+		margin-top: 0.7em;
+		z-index: 10000;
+	}
 }

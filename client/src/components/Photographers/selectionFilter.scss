@@ -32,4 +32,8 @@
 	select:hover {
 		outline: none;
 	}
+
+	@include phone {
+		display: none;
+	}
 }

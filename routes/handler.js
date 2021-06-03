@@ -4,6 +4,8 @@ const router = express.Router();
 const data = require("../FishEyeData.json");
 const app = express();
 
+const database = [];
+
 //array of all unique tags given by the photographers
 router.get("/photographers/tags", (req, res) => {
 	let tags = []; //empty array
@@ -644,7 +646,9 @@ router.get("/photographers/:id/media", (req, res) => {
 });
 
 router.post("/contactForm/submit", (req, res) => {
-	res.send("data recieved");
+	const data = req.body;
+
+	res.send({ data });
 });
 
 app.listen(80, function () {

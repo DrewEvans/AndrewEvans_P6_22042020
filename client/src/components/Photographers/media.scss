@@ -3,6 +3,16 @@
 
 .media-card {
 	margin: 1.2em 2.5em;
+	@include phone {
+		margin: 0 auto;
+		justify-self: center;
+		align-self: center;
+	}
+	@include tablet {
+		margin: 0 auto;
+		justify-self: center;
+		align-self: center;
+	}
 
 	.content-backdrop {
 		@include flexCenter(none);
@@ -10,6 +20,11 @@
 		border-radius: 5px;
 		height: 300px;
 		width: 300px;
+
+		@include phone {
+			height: 220px;
+			width: 350px;
+		}
 
 		img {
 			object-fit: cover;
@@ -36,6 +51,9 @@
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		@include phone {
+			width: 350px;
+		}
 
 		.content-title {
 			width: 75%;

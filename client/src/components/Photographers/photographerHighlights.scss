@@ -1,0 +1,29 @@
+@import "../../styles/functions.scss";
+@import "../../styles/variables.scss";
+
+.highlight-box {
+	position: fixed;
+	padding: 0 0.5em;
+	bottom: 0;
+	right: 2em;
+	border-top-left-radius: 5px;
+	border-top-right-radius: 5px;
+	background-color: $quaternary-color;
+
+	@include phone {
+		display: none;
+	}
+	@include tablet {
+		display: none;
+	}
+
+	@include flexCenter(row);
+
+	.total-likes {
+		@include flexCenter(row);
+		margin: 0 1em;
+	}
+	p {
+		margin: 1em 1.2em;
+	}
+}

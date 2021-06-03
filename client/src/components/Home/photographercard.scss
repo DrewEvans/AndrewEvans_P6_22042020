@@ -6,6 +6,9 @@
 	justify-content: space-between;
 	margin: 1em 2em;
 	width: 320px;
+	@include phone {
+		margin: 0.5em 1em;
+	}
 
 	.img-container {
 		height: 200px;
@@ -13,7 +16,7 @@
 		border-radius: 50%;
 		box-shadow: 2px 2px 2px 2px rgba(235, 235, 235, 0.377);
 
-		@include flexCenter(none);
+		@include flexCenter(column);
 
 		img {
 			object-fit: cover;
@@ -31,6 +34,10 @@
 			margin: 0.5em;
 			flex-wrap: nowrap;
 			text-decoration: none;
+
+			@include phone {
+				margin: 0.1em;
+			}
 		}
 		.location {
 			margin: 0;
@@ -39,10 +46,16 @@
 
 	.tagline {
 		margin: 0.5em;
+		@include phone {
+			margin: 0.1em;
+		}
 	}
 	.price {
 		color: $tertiary-color;
 		margin: 0.2em;
+		@include phone {
+			margin: 0em;
+		}
 	}
 
 	.tags-container {
@@ -50,6 +63,9 @@
 		.tags {
 			@include tagDefault;
 			padding: 0 0.5em;
+			@include phone {
+				font-size: 0.9em;
+			}
 		}
 		span[is-selected="true"] {
 			@include tagTarget;
