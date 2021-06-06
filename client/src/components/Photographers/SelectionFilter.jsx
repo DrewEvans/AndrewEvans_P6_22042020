@@ -4,12 +4,16 @@ const SelectionFilter = ({ handleClickItem }) => {
 	return (
 		<div className="wrapper">
 			<p className="header">Trier par</p>
-			<select onChange={handleClickItem}>
-				<option className="item" value="likes">
+			<select onChange={handleClickItem} aria-label="content-filter">
+				<option className="item" value="likes" aria-label="likes">
 					Popularité
 				</option>
-				<option value="date">Date</option>
-				<option value="image">Titre</option>
+				<option value="date" aria-label="date">
+					Date
+				</option>
+				<option value="image" aria-label="title">
+					Titre
+				</option>
 			</select>
 		</div>
 	);

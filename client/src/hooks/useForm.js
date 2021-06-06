@@ -17,11 +17,11 @@ const useForm = (validate, id, onClose) => {
 	};
 
 	const handleSubmit = (e) => {
-		const contactForm = document.querySelector(".modal-container");
-
 		e.preventDefault();
 
 		setErrors(validate(values));
+
+		console.log(errors);
 
 		if (!errors.firstName && !errors.lastName && !errors.email) {
 			axios

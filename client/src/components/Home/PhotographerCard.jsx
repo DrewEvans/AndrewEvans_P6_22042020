@@ -14,11 +14,14 @@ const PhotographerCard = ({
 	return (
 		<>
 			<div className="card-container">
-				<NavLink to={`/photographer/${id}`}>
+				<NavLink
+					to={`/photographer/${id}`}
+					style={{ textDecoration: "none" }}
+				>
 					<div className="img-container">
 						<img
 							src={`../assets/Photographers ID Photos/compressed/${portrait}`}
-							alt=""
+							alt={name}
 						/>
 					</div>
 					<div className="photographer-details">
@@ -33,7 +36,12 @@ const PhotographerCard = ({
 				<div className="tags-container">
 					{tags.map((tag, i) => {
 						return (
-							<span className="tags" key={i}>
+							<span
+								className="tags"
+								key={i}
+								aria-label={tag}
+								aria-required="true"
+							>
 								#{tag}
 							</span>
 						);

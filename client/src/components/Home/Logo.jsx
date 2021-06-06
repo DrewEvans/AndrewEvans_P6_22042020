@@ -5,7 +5,7 @@ const Logo = () => {
 	return (
 		<NavLink to="/">
 			<div className="logo-container">
-				<img src="../assets/fisheye-logo.png" alt="" />
+				<img src="../assets/fisheye-logo.png" alt="fisheye-home-page" />
 			</div>
 		</NavLink>
 	);

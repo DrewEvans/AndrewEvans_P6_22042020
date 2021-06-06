@@ -4,6 +4,7 @@ import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./media.scss";
 
 const Media = ({
+	index,
 	id,
 	name,
 	tags,
@@ -14,16 +15,10 @@ const Media = ({
 	contentId,
 	key,
 	openmodal,
+	onKeyPress,
 }) => {
 	const [userLikes, setUserLikes] = useState(likes);
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
-
-	// const handleLikes = (e) => {
-	// 	//if user clicks heart
-	// 	//increament userlikes by + 1
-	// 	//if user clicks heart for second time
-	// 	//decrement reset to prevState
-	// };
 
 	return (
 		<>
@@ -38,14 +33,19 @@ const Media = ({
 						/> */}
 					<div
 						onClick={openmodal}
+						onKeyPress={onKeyPress}
 						value="current"
 						className="content-backdrop"
+						aria-label="image-closeup-view"
+						aria-selected="true"
+						role="tab"
+						tabIndex={index}
 					>
 						<img
 							id="img-display"
 							key={key}
 							src={`../assets/${name}/compressed/${image}`}
-							alt=""
+							alt={image}
 						/>
 					</div>
 					<div className="media-details">
@@ -77,6 +77,7 @@ const Media = ({
 							controls
 							src={`../assets/${name}/${video}`}
 							type="video/mp4"
+							alt={video}
 						/>
 					</div>
 					<div className="media-details">

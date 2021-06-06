@@ -20,6 +20,11 @@
 		height: 100%;
 	}
 
+	@include tablet {
+		width: 100%;
+		height: 100%;
+	}
+
 	.modal-cross {
 		font-size: 32px;
 		color: $primary-color;
@@ -34,6 +39,10 @@
 		@include phone {
 			right: 5%;
 		}
+
+		@include tablet {
+			right: 5%;
+		}
 	}
 
 	.left-arrow-container,
@@ -45,18 +54,16 @@
 		@include phone {
 			font-size: 2em;
 		}
+		@include tablet {
+			font-size: 2em;
+		}
 
-		// #next-click {
-		// 	font-size: 1em;
-		// 	color: $primary-color;
-		// 	background-color: white;
-
-		// 	border: none;
-		// 	z-index: -100;
-		// }
-
-		span {
-			padding: 0.2em;
+		button {
+			background-color: white;
+			font-size: 1em;
+			border: none;
+			color: $primary-color;
+			padding: 0.5em;
 			cursor: pointer;
 			z-index: 100;
 		}
@@ -76,10 +83,21 @@
 			width: 100%;
 			height: 100%;
 			object-fit: scale-down;
+
+			@include tablet {
+				height: 90%;
+			}
 		}
 		video {
-			margin: 0 auto;
-			width: 100%;
+			width: 80%;
+			object-fit: scale-down;
+
+			@include phone {
+				width: 80%;
+			}
+			@include tablet {
+				width: 80%;
+			}
 		}
 	}
 	.img-title {
@@ -91,6 +109,11 @@
 		font-weight: 500;
 
 		@include phone {
+			bottom: 5%;
+			left: 16%;
+		}
+
+		@include tablet {
 			bottom: 5%;
 			left: 16%;
 		}

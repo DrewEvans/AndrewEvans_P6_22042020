@@ -14,6 +14,7 @@ export default function Lightbox({
 	name,
 	moveBackward,
 	moveForward,
+	onKeyPress,
 }) {
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 	const rightAngle = <FontAwesomeIcon icon={faAngleRight} />;
@@ -24,14 +25,22 @@ export default function Lightbox({
 	}
 	return (
 		<div className="lightbox-container">
-			<button className="modal-cross" onClick={closemodal}>
+			<button
+				className="modal-cross"
+				onClick={closemodal}
+				aria-label="close dialog"
+			>
 				{closeCross}
 			</button>
 
 			<div className="left-arrow-container">
-				<span id="back-btn" onClick={moveBackward}>
+				<button
+					id="back-btn"
+					onClick={moveBackward}
+					aria-label="previous image"
+				>
 					{leftAngle}
-				</span>
+				</button>
 			</div>
 
 			<div className="img-container">
@@ -39,24 +48,40 @@ export default function Lightbox({
 					<img
 						id="lightbox-img"
 						src={`../assets/${name}/compressed/${image}`}
-						alt=""
+						alt={image
+							.replaceAll(".jpg", "")
+							.replaceAll(".mp4", "")
+							.replaceAll("_", " ")
+							.replaceAll(/([A-Z]+)/g, " $1")
+							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
 					/>
 				) : (
 					<video
 						controls
 						src={`../assets/${name}/${image}`}
 						type="video/mp4"
+						alt={image
+							.replaceAll(".jpg", "")
+							.replaceAll(".mp4", "")
+							.replaceAll("_", " ")
+							.replaceAll(/([A-Z]+)/g, " $1")
+							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
 					/>
 				)}
 			</div>
 			<div className="right-arrow-container">
-				<span id="next-click" onClick={moveForward}>
+				<button
+					id="next-click"
+					onClick={moveForward}
+					aria-label="next image"
+				>
 					{rightAngle}
-				</span>
+				</button>
 			</div>
 			<p className="img-title">
 				{image
 					.replaceAll(".jpg", "")
+					.replaceAll(".mp4", "")
 					.replaceAll("_", " ")
 					.replaceAll(/([A-Z]+)/g, " $1")
 					.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}

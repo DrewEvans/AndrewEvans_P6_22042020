@@ -13,6 +13,7 @@ const Navbar = ({ navTags, handleBtns }) => {
 										onClick={handleBtns}
 										key={i}
 										value={navtag}
+										aria-label={navtag}
 									>
 										#{navtag}
 									</button>

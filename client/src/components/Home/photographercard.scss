@@ -3,11 +3,13 @@
 
 .card-container {
 	@include flexCenter(column);
-	justify-content: space-between;
-	margin: 1em 2em;
+	margin: 1.5em 3em;
 	width: 320px;
 	@include phone {
 		margin: 0.5em 1em;
+	}
+	@include tablet {
+		margin: 1em 1.5em;
 	}
 
 	.img-container {
@@ -40,6 +42,7 @@
 			}
 		}
 		.location {
+			color: $primary-color;
 			margin: 0;
 		}
 	}

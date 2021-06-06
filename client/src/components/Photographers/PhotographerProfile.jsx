@@ -144,6 +144,13 @@ const PhotographerProfile = ({ match }) => {
 		totalLikes += e.likes;
 	});
 
+	const onKeyPress = (e) => {
+		console.log(e.charCode);
+		if (e.charCode === 13) {
+			setModalIsOpen(true);
+		}
+	};
+
 	return (
 		<>
 			<Logo />
@@ -180,7 +187,9 @@ const PhotographerProfile = ({ match }) => {
 							return (
 								<div key={photographer.id + i}>
 									<Media
+										index={i}
 										openmodal={openModal}
+										onKeyPress={onKeyPress}
 										tags={media.tags}
 										name={photographer.name}
 										image={media.image}
