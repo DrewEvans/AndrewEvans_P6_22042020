@@ -1,0 +1,15 @@
+{
+  "dev": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-fisheyeapp-dev-202124-authRole",
+      "UnauthRoleArn": "arn:aws:iam::755364331207:role/amplify-fisheyeapp-dev-202124-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::755364331207:role/amplify-fisheyeapp-dev-202124-authRole",
+      "Region": "eu-west-1",
+      "DeploymentBucketName": "amplify-fisheyeapp-dev-202124-deployment",
+      "UnauthRoleName": "amplify-fisheyeapp-dev-202124-unauthRole",
+      "StackName": "amplify-fisheyeapp-dev-202124",
+      "StackId": "arn:aws:cloudformation:eu-west-1:755364331207:stack/amplify-fisheyeapp-dev-202124/2bdf1a40-c7bd-11eb-9097-063be8109a9d",
+      "AmplifyAppId": "d3lb4ubi47wz4e"
+    }
+  }
+}
