@@ -8,7 +8,7 @@
 		"start": "node server.js",
 		"server": "nodemon server.js",
 		"client": "npm start --prefix client",
-		"build": "npm build --prefix client",
+		"build": "npm run docs:build",
 		"dev": "concurrently \"npm run server\" \"npm run client\""
 	},
 	"author": "Drew Evans",
