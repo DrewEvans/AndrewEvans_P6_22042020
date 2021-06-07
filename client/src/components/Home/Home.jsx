@@ -50,11 +50,13 @@ const Home = () => {
 			sibling = sibling.nextSibling;
 		}
 		// on user click remove filters on siblings
+
 		if (e.isTrusted) {
 			siblings.forEach((sibling) => {
 				sibling.removeAttribute("is-selected");
 			});
 		}
+
 		//set the new target filter
 		e.target.setAttribute("is-selected", true);
 		setFilter(e.target.value);
