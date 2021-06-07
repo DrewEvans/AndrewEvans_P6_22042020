@@ -5,13 +5,13 @@ const SelectionFilter = ({ handleClickItem }) => {
 		<div className="wrapper">
 			<p className="header">Trier par</p>
 			<select onChange={handleClickItem} aria-label="content-filter">
-				<option className="item" value="likes" aria-label="likes">
+				<option className="item" value="likes" aria-labelledby="likes">
 					Popularité
 				</option>
-				<option value="date" aria-label="date">
+				<option value="date" aria-labelledby="order by date">
 					Date
 				</option>
-				<option value="image" aria-label="title">
+				<option value="image" aria-labelledby="order by title">
 					Titre
 				</option>
 			</select>

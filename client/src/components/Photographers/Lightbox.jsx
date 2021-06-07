@@ -24,7 +24,11 @@ export default function Lightbox({
 		return null;
 	}
 	return (
-		<div className="lightbox-container">
+		<div
+			role="dialog"
+			aria-label="image closeup view"
+			className="lightbox-container"
+		>
 			<button
 				className="modal-cross"
 				onClick={closemodal}
@@ -50,7 +54,11 @@ export default function Lightbox({
 						src={`../assets/${name}/compressed/${image}`}
 						alt={image
 							.replaceAll(".jpg", "")
-							.replaceAll(".mp4", "")
+							.replaceAll("_", " ")
+							.replaceAll(/([A-Z]+)/g, " $1")
+							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
+						aria-label={image
+							.replaceAll(".jpg", "")
 							.replaceAll("_", " ")
 							.replaceAll(/([A-Z]+)/g, " $1")
 							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
@@ -61,6 +69,12 @@ export default function Lightbox({
 						src={`../assets/${name}/${image}`}
 						type="video/mp4"
 						alt={image
+							.replaceAll(".jpg", "")
+							.replaceAll(".mp4", "")
+							.replaceAll("_", " ")
+							.replaceAll(/([A-Z]+)/g, " $1")
+							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
+						aria-label={image
 							.replaceAll(".jpg", "")
 							.replaceAll(".mp4", "")
 							.replaceAll("_", " ")

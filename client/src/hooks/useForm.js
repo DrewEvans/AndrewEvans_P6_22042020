@@ -14,15 +14,10 @@ const useForm = (validate, id, onClose) => {
 	const handleChange = (e) => {
 		const { name, value } = e.target;
 		setValues({ ...values, [name]: value });
+		setErrors(validate(values));
 	};
 
-	const handleSubmit = (e) => {
-		e.preventDefault();
-
-		setErrors(validate(values));
-
-		console.log(errors);
-
+	const submitForm = () => {
 		if (!errors.firstName && !errors.lastName && !errors.email) {
 			axios
 				.post("/api/contactForm/submit", {
@@ -44,8 +39,13 @@ const useForm = (validate, id, onClose) => {
 
 			onClose();
 		} else {
-			return null;
+			return console.log(errors);
 		}
+	};
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		submitForm();
 	};
 
 	return { handleChange, handleSubmit, values, errors };

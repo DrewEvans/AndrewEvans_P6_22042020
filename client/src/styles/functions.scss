@@ -12,6 +12,7 @@
 	border-radius: 11px;
 	margin: 0.2em;
 	padding: 0.25em 0.5em;
+	transition: 225ms;
 }
 
 @mixin tagTarget {
@@ -35,6 +36,7 @@
 	color: #000;
 	background-color: $quaternary-color;
 	cursor: pointer;
+	transition: 225ms;
 }
 
 @mixin phone {

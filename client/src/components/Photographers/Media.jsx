@@ -36,7 +36,13 @@ const Media = ({
 						onKeyPress={onKeyPress}
 						value="current"
 						className="content-backdrop"
-						aria-label="image-closeup-view"
+						aria-label={`${image
+							.replaceAll(".jpg", "")
+							.replaceAll("_", " ")
+							.replaceAll(/([A-Z]+)/g, " $1")
+							.replaceAll(/(^\w|\s\w)/g, (m) =>
+								m.toUpperCase()
+							)}, closeup view`}
 						aria-selected="true"
 						role="tab"
 						tabIndex={index}

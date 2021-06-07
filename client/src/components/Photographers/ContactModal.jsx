@@ -10,11 +10,16 @@ const ContactModal = ({ open, onClose, name, id }) => {
 		id,
 		onClose
 	);
+
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 
 	if (!open) return null;
 	return (
-		<div className="modal-container">
+		<div
+			role="dialog"
+			aria-label={`contact me ${name}`}
+			className="modal-container"
+		>
 			<button
 				onClick={onClose}
 				className="modal-cross"
@@ -23,11 +28,11 @@ const ContactModal = ({ open, onClose, name, id }) => {
 				{closeCross}
 			</button>
 			<div className="contact-form">
-				<div className="form-title" aria-label={`contact me ${name}`}>
+				<div className="form-title">
 					<h1>Contactez-moi</h1>
 					<h2>{name}</h2>
 				</div>
-				<form className="user-details" onSubmit={handleSubmit}>
+				<form className="user-details">
 					<div className="form-group">
 						<label htmlFor="firstName">{"Prénom"}</label>
 						<input
@@ -35,6 +40,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 							name="firstName"
 							className="form-control"
 							type="text"
+							minLength="2"
 							value={values.firstName}
 							aria-label="first name"
 							onChange={handleChange}
@@ -50,6 +56,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 							name="lastName"
 							className="form-control"
 							type="text"
+							minLength="2"
 							value={values.lastName}
 							aria-label="last name"
 							onChange={handleChange}
@@ -80,6 +87,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 							name="message"
 							className="form-control"
 							type="text"
+							minLength="2"
 							value={values.message}
 							aria-label="your message"
 							onChange={handleChange}

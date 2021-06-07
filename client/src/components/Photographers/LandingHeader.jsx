@@ -28,7 +28,11 @@ const LandingHeader = ({
 					{tags
 						? tags.map((tag, i) => {
 								return (
-									<div className="tags" key={i}>
+									<div
+										className="tags"
+										key={i}
+										aria-label={`tag ${tag}`}
+									>
 										#{tag}
 									</div>
 								);
@@ -37,7 +41,9 @@ const LandingHeader = ({
 				</div>
 			</div>
 			<div className="btn-container">
-				<button onClick={() => setIsOpen(true)}>Contactez-moi</button>
+				<button onClick={() => setIsOpen(true)} aria-label="contact me">
+					Contactez-moi
+				</button>
 			</div>
 			<ContactModal
 				open={isOpen}

@@ -21,6 +21,10 @@ const PhotographerProfile = ({ match }) => {
 		fetchPhotographerMedia(ID);
 	}, [ID]);
 
+	useEffect(() => {
+		sortArray(sortType);
+	}, [sortType, allMedia]);
+
 	async function fetchPhotographerInfo(id) {
 		const request = await axios.get(`/api/photographers/${id}`);
 		const data = request.data;
@@ -41,46 +45,43 @@ const PhotographerProfile = ({ match }) => {
 		setSortType(e.target.value);
 	};
 
-	useEffect(() => {
-		const sortArray = (type) => {
-			const types = {
-				likes: "likes",
-				date: "date",
-				image: "image",
-			};
-			const sortProperty = types[type];
-
-			let sortParameters = sortType;
-
-			if (sortProperty === "likes") {
-				sortParameters = [...allMedia].sort((a, b) => {
-					if (b.likes > a.likes) {
-						return 1;
-					}
-					return -1;
-				});
-			}
-			if (sortProperty === "image") {
-				sortParameters = [...allMedia].sort((a, b) => {
-					if (a.image - b.image) {
-						return 1;
-					}
-					return -1;
-				});
-			}
-			if (sortProperty === "date") {
-				sortParameters = [...allMedia].sort((a, b) => {
-					if (a.date > b.date) {
-						return 1;
-					}
-					return -1;
-				});
-			}
-			const sorted = sortParameters;
-			setSortedMedia(sorted);
+	const sortArray = (type) => {
+		const types = {
+			likes: "likes",
+			date: "date",
+			image: "image",
 		};
-		sortArray(sortType);
-	}, [sortType, allMedia]);
+		const sortProperty = types[type];
+
+		let sortParameters = sortType;
+
+		if (sortProperty === "likes") {
+			sortParameters = [...allMedia].sort((a, b) => {
+				if (b.likes > a.likes) {
+					return 1;
+				}
+				return -1;
+			});
+		}
+		if (sortProperty === "image") {
+			sortParameters = [...allMedia].sort((a, b) => {
+				if (a.image - b.image) {
+					return 1;
+				}
+				return -1;
+			});
+		}
+		if (sortProperty === "date") {
+			sortParameters = [...allMedia].sort((a, b) => {
+				if (a.date > b.date) {
+					return 1;
+				}
+				return -1;
+			});
+		}
+		const sorted = sortParameters;
+		setSortedMedia(sorted);
+	};
 
 	const [modalIsOpen, setModalIsOpen] = useState(false);
 	const [currentImage, setCurrentImage] = useState();
@@ -101,6 +102,13 @@ const PhotographerProfile = ({ match }) => {
 		e.isTrusted ? displayImages(+1) : console.log(false);
 	};
 
+	const onKeyPress = (e) => {
+		console.log(e.charCode);
+		if (e.charCode === 13) {
+			setModalIsOpen(true);
+		}
+	};
+
 	let imageIndex;
 
 	const displayImages = (n) => {
@@ -111,7 +119,7 @@ const PhotographerProfile = ({ match }) => {
 			if (content.video) {
 				return content.video;
 			}
-			return content;
+			return true;
 		});
 
 		const proxy = new Proxy(allContent, {
@@ -137,19 +145,10 @@ const PhotographerProfile = ({ match }) => {
 		}
 	};
 
-	displayImages(imageIndex);
-
 	let totalLikes = 0;
-	sortedMedia.forEach((e) => {
-		totalLikes += e.likes;
+	allMedia.forEach((like) => {
+		totalLikes += like.likes;
 	});
-
-	const onKeyPress = (e) => {
-		console.log(e.charCode);
-		if (e.charCode === 13) {
-			setModalIsOpen(true);
-		}
-	};
 
 	return (
 		<>
