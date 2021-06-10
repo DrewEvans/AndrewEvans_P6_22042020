@@ -631,6 +631,7 @@ router.get("/photographers/:id", (req, res) => {
 		return photographer.id == req.params.id;
 	});
 	//send photographer to the client
+	console.log(photographer);
 	res.json(photographer);
 });
 

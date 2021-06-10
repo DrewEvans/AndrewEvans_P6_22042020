@@ -26,7 +26,11 @@ const PhotographerProfile = ({ match }) => {
 	}, [sortType, allMedia]);
 
 	async function fetchPhotographerInfo(id) {
-		const request = await axios.get(`/api/photographers/${id}`);
+		const request = await axios({
+			method: "get",
+			url: `/api/photographers/${id}`,
+			baseURL: "http://34.251.153.147:5000",
+		});
 		const data = request.data;
 
 		data.map((photographerInfo) => {
@@ -36,7 +40,11 @@ const PhotographerProfile = ({ match }) => {
 	}
 
 	async function fetchPhotographerMedia(id) {
-		const request = await axios.get(`/api/photographers/${id}/media`);
+		const request = await axios({
+			method: "get",
+			url: `/api/photographers/${id}/media`,
+			baseURL: "http://34.251.153.147:5000",
+		});
 		const data = request.data;
 		setAllMedia(data);
 	}

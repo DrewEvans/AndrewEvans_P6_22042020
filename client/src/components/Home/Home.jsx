@@ -22,12 +22,20 @@ const Home = () => {
 
 	//fetch photographers
 	async function fetchPhotographers() {
-		const request = await axios.get("/api/photographers");
+		const request = await axios({
+			method: "get",
+			url: "/api/photographers",
+			baseURL: "http://34.251.153.147:5000",
+		});
 		setPhotographers(request.data);
 	}
 	//fetch Unique tags
 	async function fetchPhotographersTags() {
-		const request = await axios.get("/api/photographers/tags");
+		const request = await axios({
+			method: "get",
+			url: "/api/photographers/tags",
+			baseURL: "http://34.251.153.147:5000",
+		});
 		setNavTags(request.data);
 	}
 
