@@ -160,7 +160,9 @@ const PhotographerProfile = ({ match }) => {
 
 	return (
 		<>
-			<Logo />
+			<div className="l-container">
+				<Logo />
+			</div>
 			<main>
 				<header>
 					{photographer ? (

@@ -1,6 +1,13 @@
 @import "../../styles/functions.scss";
 @import "../../styles/variables.scss";
 
+.l-container {
+	@include flexCenter(row);
+	justify-content: flex-start;
+	width: 76%;
+	margin: 0 auto;
+}
+
 .content-container {
 	@include flexCenter(row);
 	justify-content: space-between;
