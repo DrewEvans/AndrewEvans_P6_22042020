@@ -24,82 +24,91 @@ export default function Lightbox({
 		return null;
 	}
 	return (
-		<div
-			role="dialog"
-			aria-label="image closeup view"
-			className="lightbox-container"
-		>
-			<button
-				className="modal-cross"
-				onClick={closemodal}
-				aria-label="close dialog"
+		<div className="lightbox-background">
+			<dialog
+				aria-label="image closeup view"
+				className="lightbox-container"
 			>
-				{closeCross}
-			</button>
-
-			<div className="left-arrow-container">
 				<button
-					id="back-btn"
-					onClick={moveBackward}
-					aria-label="previous image"
+					className="modal-cross"
+					onClick={closemodal}
+					aria-label="close dialog"
 				>
-					{leftAngle}
+					{closeCross}
 				</button>
-			</div>
 
-			<div className="img-container">
-				{image.includes(".jpg") ? (
-					<img
-						id="lightbox-img"
-						src={`../assets/${name}/compressed/${image}`}
-						alt={image
-							.replaceAll(".jpg", "")
-							.replaceAll("_", " ")
-							.replaceAll(/([A-Z]+)/g, " $1")
-							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
-						aria-label={image
-							.replaceAll(".jpg", "")
-							.replaceAll("_", " ")
-							.replaceAll(/([A-Z]+)/g, " $1")
-							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
-					/>
-				) : (
-					<video
-						controls
-						src={`../assets/${name}/${image}`}
-						type="video/mp4"
-						alt={image
-							.replaceAll(".jpg", "")
-							.replaceAll(".mp4", "")
-							.replaceAll("_", " ")
-							.replaceAll(/([A-Z]+)/g, " $1")
-							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
-						aria-label={image
-							.replaceAll(".jpg", "")
-							.replaceAll(".mp4", "")
-							.replaceAll("_", " ")
-							.replaceAll(/([A-Z]+)/g, " $1")
-							.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
-					/>
-				)}
-			</div>
-			<div className="right-arrow-container">
-				<button
-					id="next-click"
-					onClick={moveForward}
-					aria-label="next image"
-				>
-					{rightAngle}
-				</button>
-			</div>
-			<p className="img-title">
-				{image
-					.replaceAll(".jpg", "")
-					.replaceAll(".mp4", "")
-					.replaceAll("_", " ")
-					.replaceAll(/([A-Z]+)/g, " $1")
-					.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
-			</p>
+				<div className="left-arrow-container">
+					<button
+						id="back-btn"
+						onClick={moveBackward}
+						aria-label="previous image"
+					>
+						{leftAngle}
+					</button>
+				</div>
+
+				<div className="img-container">
+					{image.includes(".jpg") ? (
+						<img
+							id="lightbox-img"
+							src={`../assets/${name}/compressed/${image}`}
+							alt={image
+								.replaceAll(".jpg", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.replaceAll(/(^\w|\s\w)/g, (m) =>
+									m.toUpperCase()
+								)}
+							aria-label={image
+								.replaceAll(".jpg", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.replaceAll(/(^\w|\s\w)/g, (m) =>
+									m.toUpperCase()
+								)}
+						/>
+					) : (
+						<video
+							controls
+							src={`../assets/${name}/${image}`}
+							type="video/mp4"
+							alt={image
+								.replaceAll(".jpg", "")
+								.replaceAll(".mp4", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.replaceAll(/(^\w|\s\w)/g, (m) =>
+									m.toUpperCase()
+								)}
+							aria-label={image
+								.replaceAll(".jpg", "")
+								.replaceAll(".mp4", "")
+								.replaceAll("_", " ")
+								.replaceAll(/([A-Z]+)/g, " $1")
+								.replaceAll(/(^\w|\s\w)/g, (m) =>
+									m.toUpperCase()
+								)}
+						/>
+					)}
+				</div>
+				<div className="right-arrow-container">
+					<button
+						id="next-click"
+						onClick={moveForward}
+						aria-label="next image"
+					>
+						{rightAngle}
+					</button>
+				</div>
+				<p className="img-title">
+					{image
+						.replaceAll(".jpg", "")
+						.replaceAll(".mp4", "")
+						.replaceAll("_", " ")
+						.replaceAll(/([A-Z]+)/g, " $1")
+						.replaceAll(/(^\w|\s\w)/g, (m) => m.toUpperCase())}
+				</p>
+			</dialog>
 		</div>
 	);
 }
