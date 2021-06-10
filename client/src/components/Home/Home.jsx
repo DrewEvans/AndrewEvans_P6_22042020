@@ -68,7 +68,6 @@ const Home = () => {
 			e.target.removeAttribute("is-selected", false);
 			e.currentTarget.blur();
 			setFilter([]);
-			console.log(e.target);
 		} else {
 			//set the new target filter
 			e.target.setAttribute("is-selected", true);
@@ -76,7 +75,6 @@ const Home = () => {
 		}
 	};
 
-	console.log(`filter is: ${filter}`);
 	//rerender photographers when user triggers a filter
 	useEffect(() => {
 		const photographersByTag = (filterTag, photographers) => {
