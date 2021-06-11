@@ -6,6 +6,12 @@
 	justify-content: flex-start;
 	width: 76%;
 	margin: 0 auto;
+	@include tablet {
+		width: 100%;
+	}
+	@include phone {
+		width: 100%;
+	}
 }
 
 .content-container {
