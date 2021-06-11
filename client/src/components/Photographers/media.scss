@@ -15,7 +15,7 @@
 	}
 
 	.content-backdrop {
-		@include flexCenter(none);
+		@include flexCenter(row);
 		background-color: black;
 		border-radius: 5px;
 		height: 300px;

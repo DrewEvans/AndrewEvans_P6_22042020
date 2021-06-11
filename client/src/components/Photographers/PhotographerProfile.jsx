@@ -191,7 +191,11 @@ const PhotographerProfile = ({ match }) => {
 						moveBackward={moveBackward}
 						moveForward={moveForward}
 					/>
-					<div className="content-container">
+					<div
+						role="region"
+						aria-label="Photographer Media"
+						className="content-container"
+					>
 						{sortedMedia.map((media, i) => {
 							return (
 								<div key={photographer.id + i}>

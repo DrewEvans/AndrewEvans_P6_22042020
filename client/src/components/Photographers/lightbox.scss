@@ -87,7 +87,7 @@
 	}
 
 	.img-container {
-		@include flexCenter(none);
+		@include flexCenter(row);
 		height: 95%;
 		width: 100%;
 
