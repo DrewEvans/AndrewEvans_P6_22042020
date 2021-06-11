@@ -11,6 +11,7 @@ const PhotographerCard = ({
 	id,
 	portrait,
 }) => {
+	//renders the photographer cards on the homepage with the props passed from home component
 	return (
 		<>
 			<div className="card-container">

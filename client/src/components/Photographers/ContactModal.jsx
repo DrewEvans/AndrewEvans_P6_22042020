@@ -13,6 +13,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 
+	//render contact form if state is true
 	if (!open) return null;
 	return (
 		<div className="contact-form-background">

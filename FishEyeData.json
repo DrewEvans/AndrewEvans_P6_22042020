@@ -191,7 +191,7 @@
 		{
 			"id": 725639493,
 			"photographerId": 925,
-			"image": "Event_ProductPitchjpg",
+			"image": "Event_ProductPitch.jpg",
 			"tags": ["events"],
 			"likes": 3,
 			"date": "2019-05-20",
@@ -443,7 +443,7 @@
 		{
 			"id": 235234343,
 			"photographerId": 195,
-			"image": "Travel_Adventure_Door.jpg",
+			"image": "Travel _Adventure_Door.jpg",
 			"tags": ["travel"],
 			"likes": 63,
 			"date": "2019-06-26",
@@ -452,7 +452,7 @@
 		{
 			"id": 6234234343,
 			"photographerId": 195,
-			"image": "Architecture_Contrast.jpg",
+			"image": "Architecure_Contrast.jpg",
 			"tags": ["architecture"],
 			"likes": 52,
 			"date": "2019-06-30",
@@ -479,7 +479,7 @@
 		{
 			"id": 9259398453,
 			"photographerId": 195,
-			"video": "Architecture_coverr_circle_empty_highway_in_buenos_aires_587740985637.mp4",
+			"video": "Architecture_cover_circle_empty_highway_in_buenos_aires.mp4",
 			"tags": ["architecture"],
 			"likes": 57,
 			"date": "2020-01-20",

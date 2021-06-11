@@ -1,6 +1,7 @@
 import "./navbar.scss";
 
 const Navbar = ({ navTags, handleBtns }) => {
+	//on navtag load render all unique tags on home compnent
 	return (
 		<>
 			<nav>

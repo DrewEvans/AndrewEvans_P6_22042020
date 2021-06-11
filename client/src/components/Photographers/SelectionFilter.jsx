@@ -1,6 +1,9 @@
 import "./selectionFilter.scss";
 
 const SelectionFilter = ({ handleClickItem }) => {
+	//returns the value to Photographer
+	//component when user selects an option
+
 	return (
 		<div className="wrapper">
 			<p className="header">Trier par</p>

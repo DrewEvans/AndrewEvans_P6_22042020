@@ -20,7 +20,7 @@ const Home = () => {
 		fetchPhotographersTags();
 	}, []);
 
-	//fetch photographers
+	//fetch photographers from server
 	async function fetchPhotographers() {
 		const request = await axios({
 			method: "get",
@@ -29,7 +29,7 @@ const Home = () => {
 		});
 		setPhotographers(request.data);
 	}
-	//fetch Unique tags
+	//fetch Unique tags from server
 	async function fetchPhotographersTags() {
 		const request = await axios({
 			method: "get",
