@@ -5,6 +5,7 @@ import useForm from "../../hooks/useForm";
 import validate from "../../functions/validateValues";
 
 const ContactModal = ({ open, onClose, name, id }) => {
+	//handles input field data and contact form submission
 	const { handleChange, values, handleSubmit, errors } = useForm(
 		validate,
 		id,
@@ -22,6 +23,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 				className="modal-container"
 			>
 				<button
+					// listen to click event and set state to false if clicked
 					onClick={onClose}
 					className="modal-cross"
 					aria-label="close contact form"
@@ -44,6 +46,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 								minLength="2"
 								value={values.firstName}
 								aria-label="first name"
+								//event listens to changes made within the input tab the useForm hook
 								onChange={handleChange}
 							/>
 							{errors.firstName && (
@@ -60,6 +63,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 								minLength="2"
 								value={values.lastName}
 								aria-label="last name"
+								//event listens to changes made within the input tab the useForm hook
 								onChange={handleChange}
 							/>
 							{errors.lastName && (
@@ -74,6 +78,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 								className="form-control"
 								type="email"
 								value={values.email}
+								//event listens to changes made within the input tab the useForm hook
 								onChange={handleChange}
 								aria-label="email"
 							/>
@@ -91,6 +96,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 								minLength="2"
 								value={values.message}
 								aria-label="your message"
+								//event listens to changes made within the input tab and updates the useForm hook
 								onChange={handleChange}
 								rows="6"
 								cols="45"
@@ -101,6 +107,7 @@ const ContactModal = ({ open, onClose, name, id }) => {
 							type="submit"
 							value="Envoyer"
 							className="submit-btn-input"
+							////event listener to submit user info if data validation passes and updates in the useForm hook
 							onClick={handleSubmit}
 							aria-label="send"
 						/>

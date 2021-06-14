@@ -6,4 +6,10 @@ body {
 	@include phone {
 		margin: 0;
 	}
+	@include tablet {
+		margin: 0;
+	}
+	@include laptop {
+		margin: 0;
+	}
 }

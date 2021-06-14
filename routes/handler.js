@@ -646,6 +646,23 @@ router.get("/photographers/:id/media", (req, res) => {
 	res.send(photographerMedia);
 });
 
+router.get("/photographers-alt-text", (req, res) => {
+	const mediaAlt = data.media.filter((photographerMedia) => {
+		if (photographerMedia.image || photographerMedia.video) {
+			let content = photographerMedia.image || photographerMedia.video;
+			console.log(content);
+
+			return (photographerMedia.altText = content
+				.replace(/_/g, " ")
+				.replace(/(^\w|\s\w)/g, (m) => m.toUpperCase())
+				.split(".")
+				.slice(0, -1)
+				.join("."));
+		}
+	});
+
+	res.send(mediaAlt);
+});
 router.post("/contactForm/submit", (req, res) => {
 	const data = req.body;
 

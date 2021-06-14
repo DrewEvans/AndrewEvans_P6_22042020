@@ -256,14 +256,17 @@ const PhotographerProfile = ({ match }) => {
 						})}
 					</div>
 				</section>
-				{photographer ? (
-					<PhotograpgherHighlights
-						likes={totalLikes}
-						price={photographer.price}
-					/>
-				) : (
-					"Loading..."
-				)}
+				{
+					//render component if data present
+					photographer ? (
+						<PhotograpgherHighlights
+							likes={totalLikes}
+							price={photographer.price}
+						/>
+					) : (
+						"Loading..."
+					)
+				}
 			</main>
 		</>
 	);

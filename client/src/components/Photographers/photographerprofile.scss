@@ -36,4 +36,11 @@
 		align-items: center;
 		justify-items: center;
 	}
+	@include laptop {
+		justify-content: space-around;
+		margin: 0;
+		width: auto;
+		align-items: center;
+		justify-items: center;
+	}
 }

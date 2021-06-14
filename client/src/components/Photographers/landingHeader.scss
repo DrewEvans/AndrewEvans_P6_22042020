@@ -20,6 +20,10 @@
 		width: 95%;
 		background-color: white;
 	}
+	@include laptop {
+		margin: 1.5em auto;
+		width: 95%;
+	}
 
 	.photographer-details {
 		@include flexCenter(column);
@@ -107,13 +111,16 @@
 
 		@include phone {
 			position: fixed;
+			width: 140px;
 			bottom: 4%;
-			margin: auto 32%;
+			left: 35%;
+			right: 35%;
 		}
 		@include tablet {
 			position: fixed;
 			bottom: 4%;
-			margin: auto 32%;
+			left: 40%;
+			right: 40%;
 		}
 	}
 

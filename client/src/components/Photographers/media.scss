@@ -13,6 +13,11 @@
 		justify-self: center;
 		align-self: center;
 	}
+	@include laptop {
+		margin: 0 auto;
+		justify-self: center;
+		align-self: center;
+	}
 
 	.content-backdrop {
 		@include flexCenter(row);

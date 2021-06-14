@@ -25,19 +25,22 @@ const LandingHeader = ({
 				<p className="tagline">{tagline}</p>
 
 				<div className="tag-container">
-					{tags
-						? tags.map((tag, i) => {
-								return (
-									<div
-										className="tags"
-										key={i}
-										aria-label={`tag ${tag}`}
-									>
-										#{tag}
-									</div>
-								);
-						  })
-						: "Loading..."}
+					{
+						//if tags present loop and display photographer tags
+						tags
+							? tags.map((tag, i) => {
+									return (
+										<div
+											className="tags"
+											key={i}
+											aria-label={`tag ${tag}`}
+										>
+											#{tag}
+										</div>
+									);
+							  })
+							: "Loading..."
+					}
 				</div>
 			</div>
 			<div className="btn-container">
@@ -46,7 +49,9 @@ const LandingHeader = ({
 				</button>
 			</div>
 			<ContactModal
+				//render conatact modal if isOpen state is true
 				open={isOpen}
+				//if onClose is called state is changed to false
 				onClose={() => setIsOpen(false)}
 				name={name}
 				id={id}
