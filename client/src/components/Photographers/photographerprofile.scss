@@ -44,3 +44,12 @@
 		justify-items: center;
 	}
 }
+
+.SRLStage {
+	@include phone {
+		background-color: white;
+	}
+	@include tablet {
+		background-color: rgba(255, 255, 255, 0.486);
+	}
+}

@@ -48,7 +48,13 @@ const Media = ({
 								id="img-display"
 								key={key}
 								src={`../assets/${name}/compressed/${image}`}
-								alt={image}
+								alt={image
+									.replaceAll(".jpg", "")
+									.replaceAll("_", " ")
+									.replaceAll(/([A-Z]+)/g, " $1")
+									.replaceAll(/(^\w|\s\w)/g, (m) =>
+										m.toUpperCase()
+									)}
 							/>
 						</div>
 						<div className="media-details">

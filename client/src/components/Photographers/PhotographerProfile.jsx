@@ -1,4 +1,5 @@
 import axios from "axios";
+import { SRLWrapper } from "simple-react-lightbox";
 import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
@@ -8,6 +9,34 @@ import SelectionFilter from "./SelectionFilter";
 import PhotograpgherHighlights from "./PhotograpgherHighlights";
 
 import "./photographerprofile.scss";
+
+const options = {
+	settings: {
+		overlayColor: "rgba(196, 196, 196, .8)",
+		autoplaySpeed: 1500,
+		transitionSpeed: 500,
+		usingPreact: false,
+		slideTransitionSpeed: 0.4,
+		slideTransitionTimingFunction: "linear",
+	},
+	buttons: {
+		backgroundColor: "rgba(30,30,36,0)",
+		iconColor: "rgba(144, 28, 28, 1)",
+		showAutoplayButton: false,
+		showCloseButton: false,
+		showDownloadButton: false,
+		showFullscreenButton: false,
+		showThumbnailsButton: false,
+	},
+	caption: {
+		captionColor: "rgba(144, 28, 28, 1)",
+		captionFontFamily: "DM Sans, sans-serif",
+		captionFontWeight: "600",
+	},
+	thumbnails: {
+		showThumbnails: false,
+	},
+};
 
 const PhotographerProfile = ({ match }) => {
 	const ID = parseInt(match.params.id);
@@ -230,7 +259,7 @@ const PhotographerProfile = ({ match }) => {
 						//prop to listen to when value is update in the component
 						handleClickItem={handleClickItem}
 					/>
-					<Lightbox
+					{/* <Lightbox
 						//calls modalIsOpen when user interacts with image
 						openModal={modalIsOpen}
 						//calls function when user clicks on cross button
@@ -241,33 +270,37 @@ const PhotographerProfile = ({ match }) => {
 						moveForward={moveForward}
 						image={currentImage}
 						name={photographer.name}
-					/>
-					<div
-						role="region"
-						aria-label="Photographer Media"
-						className="content-container"
-					>
-						{sortedMedia.map((media, i) => {
-							return (
-								<div key={photographer.id + i}>
-									<Media
-										index={i}
-										openmodal={openModal}
-										onKeyPress={onKeyPress}
-										tags={media.tags}
-										name={photographer.name}
-										image={media.image}
-										contentId={media.id}
-										PhotographerId={media.photographerId}
-										likes={media.likes}
-										video={media.video}
-										date={media.date}
-										key={photographer.Id}
-									/>
-								</div>
-							);
-						})}
-					</div>
+					/> */}
+					<SRLWrapper options={options}>
+						<div
+							role="region"
+							aria-label="Photographer Media"
+							className="content-container"
+						>
+							{sortedMedia.map((media, i) => {
+								return (
+									<div key={photographer.id + i}>
+										<Media
+											index={i}
+											openmodal={openModal}
+											onKeyPress={onKeyPress}
+											tags={media.tags}
+											name={photographer.name}
+											image={media.image}
+											contentId={media.id}
+											PhotographerId={
+												media.photographerId
+											}
+											likes={media.likes}
+											video={media.video}
+											date={media.date}
+											key={photographer.Id}
+										/>
+									</div>
+								);
+							})}
+						</div>
+					</SRLWrapper>
 				</section>
 				{
 					//render component if data present
