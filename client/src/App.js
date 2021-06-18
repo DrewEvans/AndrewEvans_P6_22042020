@@ -9,7 +9,7 @@ function App() {
 				<Route exact path="/" component={Home} />
 				<Route
 					exact
-					path="/photographer/:id/"
+					path="/photographers/:id/"
 					component={PhotographerProfile}
 				/>
 			</Switch>

@@ -28,11 +28,6 @@
 		padding-right: 1.7em;
 	}
 
-	select:focus,
-	select:hover {
-		outline: none;
-	}
-
 	@include phone {
 		display: none;
 	}

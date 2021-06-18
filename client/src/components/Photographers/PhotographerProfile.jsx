@@ -131,7 +131,7 @@ const PhotographerProfile = ({ match }) => {
 	};
 	//navagate prev image event listener
 	const moveBackward = (e) => {
-		e.isTrusted ? displayImages(-1) : console.log(false);
+		e ? displayImages(-1) : console.log(false);
 	};
 	//navagate next image event listener
 	const moveForward = (e) => {
@@ -139,13 +139,25 @@ const PhotographerProfile = ({ match }) => {
 	};
 	//dispaly modal & image if user tabs over and enter is pressed
 	const onKeyPress = (e) => {
-		console.log(e.charCode);
 		if (e.charCode === 13) {
+			clickedImage = e.target.firstChild.currentSrc;
+			clickedImage = clickedImage.split(/(\\|\/)/g).pop();
 			setModalIsOpen(true);
+			displayImages(0);
+			setCurrentImage(clickedImage);
 		}
 	};
 
-	//determines the images placement in the lightbox modal
+	const logKey = (e) => {
+		if (modalIsOpen && e.code === "ArrowRight") {
+			console.log(1);
+		}
+		if (modalIsOpen && e.code === "ArrowLeft") {
+			console.log(2);
+		}
+		return null;
+	};
+
 	const displayImages = (n) => {
 		//if defined display the content type
 		let allContent = sortedMedia.map((content) => {
@@ -174,6 +186,7 @@ const PhotographerProfile = ({ match }) => {
 		});
 		//update with the new proxied index of the current image
 		imageIndex = proxy.indexOf(currentImage);
+		// console.log(imageIndex);
 
 		//if value is passed set current image to new image index
 		if (n) {

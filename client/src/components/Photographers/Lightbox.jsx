@@ -14,7 +14,6 @@ export default function Lightbox({
 	name,
 	moveBackward,
 	moveForward,
-	onKeyPress,
 }) {
 	const closeCross = <FontAwesomeIcon icon={faTimes} />;
 	const rightAngle = <FontAwesomeIcon icon={faAngleRight} />;
@@ -25,7 +24,10 @@ export default function Lightbox({
 		return null;
 	}
 	return (
-		<div className="lightbox-background">
+		<div
+			className="lightbox-background"
+			onKeyDown={document.addEventListener("keydown")}
+		>
 			<dialog
 				aria-label="image closeup view"
 				className="lightbox-container"

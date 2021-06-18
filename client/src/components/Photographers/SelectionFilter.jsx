@@ -7,7 +7,13 @@ const SelectionFilter = ({ handleClickItem }) => {
 	return (
 		<div className="wrapper">
 			<p className="header">Trier par</p>
-			<select onChange={handleClickItem} aria-label="content-filter">
+			<select
+				onChange={handleClickItem}
+				role="list"
+				tabIndex="0"
+				aria-controls="content-filter"
+				aria-label="content-filter"
+			>
 				<option className="item" value="likes" aria-labelledby="likes">
 					Popularité
 				</option>

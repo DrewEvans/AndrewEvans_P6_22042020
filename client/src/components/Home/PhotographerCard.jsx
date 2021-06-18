@@ -16,7 +16,7 @@ const PhotographerCard = ({
 		<>
 			<div className="card-container">
 				<NavLink
-					to={`/photographer/${id}`}
+					to={`/photographers/${id}`}
 					style={{ textDecoration: "none" }}
 				>
 					<div className="img-container">
