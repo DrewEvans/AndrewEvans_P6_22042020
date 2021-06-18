@@ -147,86 +147,6 @@ const PhotographerProfile = ({ match }) => {
 		setSortedMedia(sorted);
 	};
 
-	//listens to when user clicks on image to display lightBox
-	const openModal = (e) => {
-		//if clicked
-		setModalIsOpen(true);
-		//update to image user clicked to be display
-		clickedImage = e.target.currentSrc;
-		//remove unneeded string from DOM to query file
-		clickedImage = clickedImage.split(/(\\|\/)/g).pop();
-		//updated state with image clicked
-		setCurrentImage(clickedImage);
-	};
-	//navagate prev image event listener
-	const moveBackward = (e) => {
-		e ? displayImages(-1) : console.log(false);
-	};
-	//navagate next image event listener
-	const moveForward = (e) => {
-		e.isTrusted ? displayImages(+1) : console.log(false);
-	};
-	//dispaly modal & image if user tabs over and enter is pressed
-	const onKeyPress = (e) => {
-		if (e.charCode === 13) {
-			clickedImage = e.target.firstChild.currentSrc;
-			clickedImage = clickedImage.split(/(\\|\/)/g).pop();
-			setModalIsOpen(true);
-			displayImages(0);
-			setCurrentImage(clickedImage);
-		}
-	};
-
-	const logKey = (e) => {
-		if (modalIsOpen && e.code === "ArrowRight") {
-			console.log(1);
-		}
-		if (modalIsOpen && e.code === "ArrowLeft") {
-			console.log(2);
-		}
-		return null;
-	};
-
-	const displayImages = (n) => {
-		//if defined display the content type
-		let allContent = sortedMedia.map((content) => {
-			if (content.image) {
-				return content.image;
-			}
-			if (content.video) {
-				return content.video;
-			}
-			return true;
-		});
-
-		// negative indexes on proxied arrays
-		const proxy = new Proxy(allContent, {
-			//set a property named -1 in all content
-			get(target, prop) {
-				//convert string prop to valid index value
-				if (!isNaN(prop)) {
-					prop = parseInt(prop, 10);
-					if (prop < 0) {
-						prop += target.length;
-					}
-				}
-				return target[prop];
-			},
-		});
-		//update with the new proxied index of the current image
-		imageIndex = proxy.indexOf(currentImage);
-		// console.log(imageIndex);
-
-		//if value is passed set current image to new image index
-		if (n) {
-			setCurrentImage(proxy[(imageIndex += n)]);
-		}
-		//if imageIndex goes beyond array length start reset index to 0
-		if (imageIndex + 1 > proxy.length) {
-			setCurrentImage(proxy[0]);
-		}
-	};
-
 	return (
 		<>
 			<div className="l-container">
@@ -259,18 +179,7 @@ const PhotographerProfile = ({ match }) => {
 						//prop to listen to when value is update in the component
 						handleClickItem={handleClickItem}
 					/>
-					{/* <Lightbox
-						//calls modalIsOpen when user interacts with image
-						openModal={modalIsOpen}
-						//calls function when user clicks on cross button
-						closemodal={() => setModalIsOpen(false)}
-						//calls function when button is clicked
-						moveBackward={moveBackward}
-						//calls function when button is clicked
-						moveForward={moveForward}
-						image={currentImage}
-						name={photographer.name}
-					/> */}
+
 					<SRLWrapper options={options}>
 						<div
 							role="region"
@@ -282,8 +191,6 @@ const PhotographerProfile = ({ match }) => {
 									<div key={photographer.id + i}>
 										<Media
 											index={i}
-											openmodal={openModal}
-											onKeyPress={onKeyPress}
 											tags={media.tags}
 											name={photographer.name}
 											image={media.image}
