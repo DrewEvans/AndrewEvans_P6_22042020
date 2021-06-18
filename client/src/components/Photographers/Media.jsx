@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLightbox } from "simple-react-lightbox";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeart } from "@fortawesome/free-solid-svg-icons";
 import "./media.scss";
@@ -15,10 +16,17 @@ const Media = ({
 	contentId,
 	key,
 	openmodal,
-	onKeyPress,
 }) => {
 	const [userLikes, setUserLikes] = useState(likes);
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
+
+	const { openLightbox } = useLightbox();
+
+	const handleKeyPress = (e) => {
+		if (e.charCode === 13) {
+			openLightbox(index);
+		}
+	};
 
 	return (
 		<>
@@ -27,10 +35,6 @@ const Media = ({
 				image && (
 					<div className="media-card">
 						<div
-							//if user clicks on image render call openModal
-							onClick={openmodal}
-							//call onKeyPress if user interacts with image
-							onKeyPress={onKeyPress}
 							value="current"
 							className="content-backdrop"
 							aria-label={`${image
@@ -42,6 +46,7 @@ const Media = ({
 								)}, closeup view`}
 							aria-selected="true"
 							role="tab"
+							onKeyPress={handleKeyPress}
 							tabIndex={index}
 						>
 							<img

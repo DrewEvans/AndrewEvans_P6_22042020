@@ -4,7 +4,6 @@ import { useEffect, useState } from "react";
 import LandingHeader from "./LandingHeader";
 import Media from "./Media";
 import Logo from "../Home/Logo";
-import Lightbox from "./Lightbox";
 import SelectionFilter from "./SelectionFilter";
 import PhotograpgherHighlights from "./PhotograpgherHighlights";
 
@@ -44,11 +43,6 @@ const PhotographerProfile = ({ match }) => {
 	const [allMedia, setAllMedia] = useState([]);
 	const [sortedMedia, setSortedMedia] = useState([]);
 	const [sortType, setSortType] = useState("likes");
-	const [modalIsOpen, setModalIsOpen] = useState(false);
-	const [currentImage, setCurrentImage] = useState();
-
-	let clickedImage;
-	let imageIndex;
 
 	//calulate total likes a photographer has
 	let totalLikes = 0;
