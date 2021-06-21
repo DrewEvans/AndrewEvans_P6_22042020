@@ -22,7 +22,7 @@ const options = {
 		backgroundColor: "rgba(30,30,36,0)",
 		iconColor: "rgba(144, 28, 28, 1)",
 		showAutoplayButton: false,
-		showCloseButton: false,
+		showCloseButton: true,
 		showDownloadButton: false,
 		showFullscreenButton: false,
 		showThumbnailsButton: false,
@@ -140,6 +140,16 @@ const PhotographerProfile = ({ match }) => {
 		//update sortedMedia state with updated list ordering
 		setSortedMedia(sorted);
 	};
+
+	const prevButton = document.querySelector(".SRLPrevButton");
+	const nextButton = document.querySelector(".SRLNextButton");
+	const closeButton = document.querySelector(".SRLCloseButton");
+
+	if (prevButton) {
+		prevButton.ariaLabel = "Previous Image";
+		nextButton.ariaLabel = "Next Image";
+		closeButton.ariaLabel = "Close Dialog";
+	}
 
 	return (
 		<>
