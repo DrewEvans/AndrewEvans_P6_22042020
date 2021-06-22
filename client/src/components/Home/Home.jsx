@@ -5,6 +5,7 @@ import Navbar from "./Navbar";
 import Logo from "./Logo";
 import "./home.scss";
 import LoadingSpinner from "../LoadingSpinner";
+import JumpToContent from "../JumpToContent";
 
 const PhotographerCard = lazy(() => import("./PhotographerCard"));
 
@@ -100,7 +101,7 @@ const Home = () => {
 		<>
 			<header>
 				<div className="nav-container">
-					<button>Passer au Contenu</button>
+					<JumpToContent />
 					<Logo />
 					<Navbar navTags={navTags} handleBtns={handleBtns} />
 					<h1 className="title">Nos photographes</h1>
