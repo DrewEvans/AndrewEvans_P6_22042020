@@ -100,6 +100,7 @@ const Home = () => {
 		<>
 			<header>
 				<div className="nav-container">
+					<button>Passer au Contenu</button>
 					<Logo />
 					<Navbar navTags={navTags} handleBtns={handleBtns} />
 					<h1 className="title">Nos photographes</h1>

@@ -16,6 +16,7 @@ const Media = ({
 	contentId,
 	key,
 	openmodal,
+	incLikes,
 }) => {
 	const [userLikes, setUserLikes] = useState(likes);
 	const heartIcon = <FontAwesomeIcon icon={faHeart} />;
@@ -26,6 +27,10 @@ const Media = ({
 		if (e.charCode === 13) {
 			openLightbox(index);
 		}
+	};
+
+	const incrementLikes = () => {
+		setUserLikes(userLikes + 1);
 	};
 
 	return (
@@ -76,7 +81,10 @@ const Media = ({
 								<i className="likes">{userLikes}</i>
 								<span
 									//if user clicks on icon increment likes by 1
-									onClick={() => setUserLikes(userLikes + 1)}
+									onClick={function (e) {
+										incLikes(e, true);
+										incrementLikes();
+									}}
 									className="heart-icon"
 								>
 									{heartIcon}
@@ -119,7 +127,10 @@ const Media = ({
 								<i className="likes">{userLikes}</i>
 								<span
 									//if user clicks on icon increment likes by 1
-									onClick={() => setUserLikes(userLikes + 1)}
+									onClick={function (e) {
+										incLikes(e, true);
+										incrementLikes();
+									}}
 									className="heart-icon"
 								>
 									{heartIcon}

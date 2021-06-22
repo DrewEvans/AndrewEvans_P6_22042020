@@ -43,12 +43,21 @@ const PhotographerProfile = ({ match }) => {
 	const [allMedia, setAllMedia] = useState([]);
 	const [sortedMedia, setSortedMedia] = useState([]);
 	const [sortType, setSortType] = useState("likes");
-
 	//calulate total likes a photographer has
-	let totalLikes = 0;
+
+	let totalLikes = null;
+
 	allMedia.forEach((like) => {
 		totalLikes += like.likes;
 	});
+
+	const [sumOfLikes, setSumOfLikes] = useState(totalLikes);
+
+	const incLikes = (e) => {
+		if (e.isTrusted) {
+			setSumOfLikes(sumOfLikes + 1);
+		}
+	};
 
 	//render fetched data once and save to state to avoid rerender
 	useEffect(() => {
@@ -206,6 +215,7 @@ const PhotographerProfile = ({ match }) => {
 											video={media.video}
 											date={media.date}
 											key={photographer.Id}
+											incLikes={incLikes}
 										/>
 									</div>
 								);
@@ -217,7 +227,7 @@ const PhotographerProfile = ({ match }) => {
 					//render component if data present
 					photographer ? (
 						<PhotograpgherHighlights
-							likes={totalLikes}
+							likes={totalLikes + sumOfLikes}
 							price={photographer.price}
 						/>
 					) : (
